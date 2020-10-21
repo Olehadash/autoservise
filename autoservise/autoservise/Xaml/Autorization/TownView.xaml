@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.TownView">
+  <ContentView.Content>
+        <Grid WidthRequest="290"
+            Margin="10,10,10,10"
+              x:Name="MainGrid">
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="г. Алматы"
+                   FontSize="Medium"
+                   HorizontalOptions="Start"
+                   x:Name="townLabel"/>
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Source="toggle.png"
+                   HorizontalOptions="End"
+                   x:Name="townImage"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

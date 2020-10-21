@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.AddOrder">
+    
+<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+            <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                <ImageButton Source="back.png"
+                             Clicked="Button_Clicked"/>
+                <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="Medium"
+                       VerticalOptions="CenterAndExpand"
+                      />
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Напишите,какую работу нужно выполнить"
+                       FontSize="Medium"
+                       HeightRequest="100"
+                       Margin="10"
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Start"
+                       BindingContextChanged="Entry_BindingContextChanged"
+                       x:Name="Entry_Des"/>
+            </StackLayout>
+            <Grid>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    Grid.Row="0">
+                    <Grid 
+                        x:Name="AddAress">
+                        <Image Source="map.png"
+                                   HorizontalOptions="Start"/>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="35,0,10,0">
+
+                            <Label Text="Добавить адрес"
+                                   FontSize="15"/>
+                            <Label Text="Не обязательное поле для заполнения"
+                                   FontSize="9"
+                                   WidthRequest="290"
+                               />
+                        </StackLayout>
+                        <Image Source="arrow.png"
+                               HeightRequest="15"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    Grid.Row="1">
+                    <Grid 
+                        x:Name="AddData">
+                        <Image Source="timedata.png"
+                                   HorizontalOptions="StartAndExpand"/>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="35,0,10,0">
+
+                            <Label Text="Указать дату и время"
+                                   FontSize="15"/>
+                            <Label Text="Не обязательное поле для заполнения"
+                                   FontSize="9"
+                               WidthRequest="290"
+                               />
+                        </StackLayout>
+                        <Image Source="arrow.png"
+                               HeightRequest="15"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    Grid.Row="2">
+                    <Grid 
+                        x:Name="AddBudget">
+                        <Image Source="money.png"
+                                   HorizontalOptions="Start"/>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="35,0,10,0">
+
+                            <Label Text="Указать бюджет "
+                                   FontSize="15"/>
+                            <Label Text="Не обязательное поле для заполнения"
+                                   FontSize="9"
+                               WidthRequest="290"
+                               />
+                        </StackLayout>
+                        <Image Source="arrow.png"
+                               HeightRequest="15"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    HeightRequest="50"
+                    Grid.Row="3">
+                    <Grid 
+                         x:Name="AddPhoto"
+                        >
+                        
+                        <Image Source="photoadd.png"
+                                   HorizontalOptions="Start"/>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Margin="35,0,10,0">
+
+                            <Label Text="Загрузить фотографии"
+                                   FontSize="15"/>
+                            <Label Text="Не обязательное поле для заполнения"
+                                   FontSize="9"
+                                   WidthRequest="290"
+                               />
+                        </StackLayout>
+                            <Image Source="arrow.png"
+                                   HeightRequest="15"
+                                   HorizontalOptions="End"/>
+                        </Grid>
+                </StackLayout>
+                <StackLayout 
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#EEF6FE"
+                        Padding="10"
+                        Margin="10,0,10,0" 
+                        Orientation="Horizontal"
+                    Grid.Row="4"
+                        >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                    <StackLayout Grid.Column="0"
+                                 WidthRequest="300"
+                                 Padding="10"
+                                 Margin="10,0,10,0">
+                        <Label 
+                            Text="Показать мой номер спецам"
+                               FontSize="Small"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <Switch Grid.Column="1"
+                            IsToggled="false" 
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            x:Name="Switcher"
+                            Toggled="Switcher_Toggled"/>
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+        <StackLayout Grid.Row="1"
+                     
+                             VerticalOptions="End">
+
+            <Button Text="Опубликовать"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        Margin="20"
+                        Clicked="Button_Clicked_1"
+                        />
+
+        </StackLayout>
+    </Grid>
+</ContentPage>

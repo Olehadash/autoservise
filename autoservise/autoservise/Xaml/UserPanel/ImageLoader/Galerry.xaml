@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.ImageLoader.Galerry">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+                </StackLayout>
+                <ScrollView>
+                    <Grid 
+                        x:Name="MainGrid"
+                        Margin="10"
+                        ColumnSpacing="20"
+                        RowSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="End">
+                <Button Text="Зарегистрироваться"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

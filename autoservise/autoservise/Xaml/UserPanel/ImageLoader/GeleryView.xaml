@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.ImageLoader.GeleryView">
+  <ContentView.Content>
+        <Frame x:Name="main"
+                               HeightRequest="150"
+                               BackgroundColor="#EEF6FE"
+                               Padding="0">
+            <Grid
+                                Margin="10,0,10,0">
+                <StackLayout x:Name="close"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="End"
+                                    IsVisible="false">
+                    <ImageButton 
+                                        Source="close.png"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                        Margin="0,0,10,0"
+                        x:Name="closebutton"/>
+                </StackLayout>
+                <FlexLayout
+                                    x:Name="StartForm"
+                                    AlignItems="Center"
+                                    AlignContent="Center"
+                                    JustifyContent="Center"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="150">
+
+                    <StackLayout 
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            x:Name="AddLayout"
+                                                 IsVisible="true">
+                        <Image 
+                                            Source="Plus.png"/>
+                        <Label
+                                            Text="Добавить фото"
+                                            VerticalOptions="End"/>
+                    </StackLayout>
+                    <Image x:Name="imageView"
+                                        Source=""/>
+                </FlexLayout>
+
+
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

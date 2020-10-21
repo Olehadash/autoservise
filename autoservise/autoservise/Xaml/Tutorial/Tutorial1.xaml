@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Tutorial.Tutorial1">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Center">
+                <Image Margin="20,50,20,20" 
+                Source="{OnPlatform iOS='4457 2.png', Android='4457 2.png'}" 
+                   WidthRequest="300"
+                   />
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="Center">
+                <Label Text="Получите ответы"
+                   TextColor="#66C7F4"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large"/>
+                <Label Text="Сравните цены, отзывы и выберите тот автосервис. который вам понравился" 
+                  FontSize="Medium"
+                   HorizontalTextAlignment="Center"
+                   Margin="30, 0,30,10"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2"
+                         VerticalOptions="End"
+                         Margin="20">
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="Center"
+                             Margin="10">
+                    <StackLayout.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Source" Value="circl.png"/>
+                            <Setter Property="WidthRequest" Value="5"/>
+                            <Setter Property="HeightRequest" Value="5"/>
+                            <Setter Property="VerticalOptions" Value="Center"/>
+                        </Style>
+
+                    </StackLayout.Resources>
+                    <Image />
+                    <Image Source="circl2.png" WidthRequest="10" HeightRequest="10"/>
+                    <Image />
+                    <Image />
+                </StackLayout>
+
+                <Button 
+                Text="Далее"
+                BorderWidth="1"
+                BorderColor="#66C7F4"
+                TextColor="#66C7F4"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                WidthRequest="300"
+                Clicked="Button_Clicked"
+                    />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

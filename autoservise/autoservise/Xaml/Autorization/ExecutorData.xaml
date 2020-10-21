@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.ExecutorData">
+    <ContentPage.Content>
+        <Grid>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked_1"/>
+                <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Выбрать город *"
+                           FontSize="12"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+                <StackLayout BackgroundColor="#EEF6FE"
+                         WidthRequest="300"
+                         Orientation="Horizontal"
+                         Margin="10,0,10,0">
+                    <Image Source="map.png"
+                       HeightRequest="15"
+                       Margin="10,10,10,10"/>
+                    <Label Text="Шымкент"
+                            FontSize="14"
+                        BackgroundColor="#EEF6FE"
+                        WidthRequest="200"
+                        Margin="5"/>
+                </StackLayout>
+                <Label Text="Выбрать раздел *"
+                           FontSize="12"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+
+                <Picker Title="Автозапчасти"
+                        BackgroundColor="#EEF6FE"
+                        Margin="10"
+                        TitleColor="Black"
+                        FontSize="13">
+                        <Picker.ItemsSource>
+                            <x:String>Автозапчасти</x:String>
+                            <x:String>Услуги СТО</x:String>
+                            <x:String>Услуги шиномонтажа</x:String>
+                            <x:String>Услуги манипулятора</x:String>
+                            <x:String>Прочие услуги</x:String>
+                        </Picker.ItemsSource>
+                </Picker>
+                <Label Text="Добавить фото"
+                           FontSize="12"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+                <StackLayout BackgroundColor="#EEF6FE"
+                         WidthRequest="300"
+                         Orientation="Horizontal"
+                         Margin="10,0,10,0">
+                    <Image Source="photoadd.png"
+                       HeightRequest="15"
+                       Margin="10,10,10,10"/>
+                    <Label Text="Добавить фото"
+                            FontSize="14"
+                        BackgroundColor="#EEF6FE"
+                        WidthRequest="200"
+                        Margin="10"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Добавить описание"
+                           FontSize="12"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+            <Entry Placeholder="Описание" 
+                   Margin="10"
+                   HeightRequest="100"
+                   BackgroundColor="#EEF6FE" 
+                   AutomationProperties.IsInAccessibleTree="False" 
+                   Keyboard="Plain" FontSize="Small" FontAttributes="Italic"/>
+            <Label Text="* Обезательное поле для заполнения"
+                           FontSize="10"
+                           HorizontalOptions="Start"
+                   TextColor="red"
+                   Margin="10,10,10,0"/>
+        </StackLayout>
+            <FlexLayout
+                AlignItems="End"
+                JustifyContent="SpaceEvenly"
+                HeightRequest="250"
+                RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Button Text="Сохранить"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+
+            </FlexLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

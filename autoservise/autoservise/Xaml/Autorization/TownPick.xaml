@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.TownPick">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"
+                         
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="FillAndExpand">
+                <Label Text="Укажите ваш город"
+                   Margin="10,0,10,0"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="#66C7F4"
+                       FontSize="Large"/>
+        
+                <ScrollView
+                    Margin="10">
+                    <StackLayout x:Name="Content">
+                    </StackLayout>
+                </ScrollView>
+
+            </StackLayout>
+            <StackLayout Grid.Row="2"
+                         VerticalOptions="End">
+
+                <Button Text="Готово"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

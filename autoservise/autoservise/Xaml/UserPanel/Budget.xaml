@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.Budget">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1000*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+                </StackLayout>
+                <Label Text="Указать бюджет"
+                           Margin="10,0,10,0"
+                           TextColor="#66C7F4" FontAttributes="Bold"/>
+
+                <Label Text="Укажите свой бюджет"
+                           Margin="10"
+                           FontSize="12"/>
+
+                <StackLayout Orientation="Horizontal"
+                             WidthRequest="300"
+                             BackgroundColor="#EEF6FE"
+                             Margin="10">
+                    <Entry Text="0"
+                          BackgroundColor="#EEF6FE"
+                           FontAttributes="13"
+                           HorizontalOptions="FillAndExpand"
+                           x:Name="PriceText"/>
+                    <Label Text="тг"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             WidthRequest="300"
+                             Margin="10"
+                             x:Name="DialBut">
+                    <Image Source="toggle.png"
+                           x:Name="ToggleImage"/>
+                    <Label Text="Договорная цена"
+                           FontSize="14"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Button Text="Сохранить"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

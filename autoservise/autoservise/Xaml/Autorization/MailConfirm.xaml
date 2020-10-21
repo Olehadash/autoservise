@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.MailConfirm">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+                </StackLayout>
+                <Label Text="Введите код подтверждения"
+                   Margin="30,0,30,10"
+                   HorizontalOptions="Center"
+                   />
+                <Image Source="Letter.png"
+                       Margin="10"/>
+                <Label Text="Код для подтверждения отправлен на почту ivan.petrov65@email.com"
+                     FontSize="12"
+                     XAlign ="Center"
+                     HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                     Margin="30,10,30,0"/>
+                <StackLayout BackgroundColor="#EEF6FE"
+                         WidthRequest="300"
+                         Orientation="Horizontal"
+                         Margin="10,20,10,0">
+                    <Editor Text="Код подтверждения"
+                            HorizontalOptions="Fill"
+                            
+                        BackgroundColor="#EEF6FE"
+                        WidthRequest="300"
+                        FontSize="14"
+                        Margin="5"/>
+                </StackLayout>
+                <Label Text="Получить новый код можно  через 30 сек"
+                     FontSize="12"
+                     XAlign ="Center"
+                     HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                     Margin="30,10,30,0"/>
+                <Button Text="Подтвердить"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="10,20,10,10"
+                        Clicked="Button_Clicked"
+                        />
+
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

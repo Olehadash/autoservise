@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.LoginPage">
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Grid.Row="0">
+                <Label Text="Авторизация"
+                   Margin="10,50,10,10"
+                   HorizontalOptions="Center"
+                   TextColor="#66C7F4"
+                       FontSize="Title"/>
+                <Label Text="Укажите свой E-mail *"
+                       FontSize="Small"
+                       HorizontalOptions="Start"
+                       Margin="10,10,10,0"/>
+                <StackLayout BackgroundColor="#EEF6FE"
+                         Orientation="Horizontal"
+                         Margin="10,0,10,0">
+                    <Image Source="Email.png"
+                       HeightRequest="25"
+                       Margin="10,10,10,10"/>
+                    <Entry x:Name="mailtxt" 
+                        Placeholder="Email"
+                        BackgroundColor="#EEF6FE"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="5"/>
+                </StackLayout>
+                <Label Text="Укажите свой E-mail *"
+                           FontSize="Small"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+                <StackLayout BackgroundColor="#EEF6FE"
+                            WidthRequest="300"
+                            Orientation="Horizontal"
+                            Margin="10,0,10,0"
+                            
+                         >
+                    <Image Source="password.png"
+                           HeightRequest="25"
+                           Margin="15,10,10,10"/>
+                    <Entry x:Name="passtxt"
+                           Placeholder="Password"
+                           BackgroundColor="#EEF6FE"
+                           HorizontalOptions="FillAndExpand"
+                           Margin="5"
+                           IsPassword="True"
+                           InputTransparent="True"
+                           />
+
+                </StackLayout>
+                <Button Text="Забыли пароль?"
+                    HorizontalOptions="Start"
+                        FontSize="Medium"
+                    Margin="10,0,10,10"
+                    Clicked="Button_Clicked_2"/>
+
+            
+        </StackLayout>
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="End">
+                <Button Text="Зарегистрироваться"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked_2"
+                        />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

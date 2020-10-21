@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Autorization.PreLog">
+    <RelativeLayout HorizontalOptions="Center"
+                    VerticalOptions="Center">
+        <Image Source="bgImage.png" Opacity="0.5"
+               Aspect="AspectFill"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+        <FlexLayout
+            AlignItems="End"
+            JustifyContent="SpaceEvenly"
+            RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+            <StackLayout>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#ffffff"
+                    RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    Padding="10"
+                    Margin="10,0,10,0" ClassId=""
+                    x:Name="ConsumerEnter">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                              NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="logico.png"
+                           WidthRequest="30"
+                           HorizontalOptions="Start"/>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Margin="20,0,50,0">
+                        <Label Text="Войти как клиент "
+                               FontSize="15"/>
+                        <Label Text="Чтобы найти специалиста "
+                               FontSize="12"/>
+                    </StackLayout>
+                    <Image Source="arrow.png"
+                           HeightRequest="15"
+                           />
+                </StackLayout>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#ffffff"
+                    RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    x:Name="ExecutorEnter">
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"
+                                              NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Image Source="logico2.png"
+                           WidthRequest="30"
+                           HorizontalOptions="Start"/>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Margin="20,0,20,0">
+                        <Label Text="Войти как специалист "
+                               FontSize="15"/>
+                        <Label Text="Чтобы предложить свои услуги"
+                               FontSize="12"/>
+                    </StackLayout>
+                    <Image Source="arrow.png"
+                           HeightRequest="15"
+                           />
+                </StackLayout>
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#ffffff"
+                    RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    Padding="10"
+                    Margin="10,0,10,15"
+                    x:Name="Enter">
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"
+                                              NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Image Source="logico3.png"
+                           WidthRequest="30"
+                           HorizontalOptions="Start"/>
+                    <Label Text="У меня уже есть аккаунт "
+                               FontSize="15"
+                               Margin="20,0,25,0"/>
+                    <Image Source="arrow.png"
+                           HeightRequest="15"
+                           HorizontalOptions="End"
+                           />
+                </StackLayout>
+            </StackLayout>
+
+
+        </FlexLayout>
+
+
+    </RelativeLayout>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.TimeAndDate">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1000*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="Medium"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+                <Label Text="Адрес"
+                           Margin="10,0,10,0"
+                           TextColor="#66C7F4" FontAttributes="Bold"/>
+
+                <Label Text="Город"
+                           Margin="10"
+                           FontSize="12"/>
+
+                <Picker Title="Город"
+                        BackgroundColor="#EEF6FE"
+                        Margin="10,0,10,0"
+                        FontSize="15"
+                        WidthRequest="300"
+                        x:Name="TownPicker">
+                    <Picker.ItemsSource>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label Text="Адрес"
+                           Margin="10"
+                           FontSize="12"/>
+
+                <Entry Placeholder="Адрес"
+                           Margin="10,0,10,0"
+                           FontSize="15"
+                           BackgroundColor="#EEF6FE"
+                       x:Name="ArdesEntry"
+                           />
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="End">
+
+                <Button Text="Сохранить"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>

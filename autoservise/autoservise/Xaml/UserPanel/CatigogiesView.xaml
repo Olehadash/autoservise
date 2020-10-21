@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.CatigogiesView">
+  <ContentView.Content>
+        <Grid 
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0" 
+                    RowSpacing="50"
+            x:Name ="MainGerid"
+            >
+            <StackLayout Grid.Column="0"
+                         HorizontalOptions="Start"
+                         Margin="10,0,60,0">
+                <Label Text="Автозапчасти"
+                       FontSize="Medium"
+                       TextColor="#66C7F4"
+                       x:Name="Title"/>
+                <Label Text="Генератор, Диски, Блок, Подушки двигателей, Ге.."
+                       FontSize="Micro"
+                       WidthRequest="290"
+                       x:Name="Descroption" 
+                       LineBreakMode="TailTruncation"
+                       />
+            </StackLayout>
+            <Image Source="arrow.png"
+                       HeightRequest="15"
+                       HorizontalOptions="End"
+                       />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

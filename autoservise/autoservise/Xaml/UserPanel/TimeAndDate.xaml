@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.OrderAdres">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0">
+                <StackLayout Orientation="Horizontal"
+                             Margin ="10,10,10,10">
+                    <ImageButton Source="back.png"
+                                 Clicked="ImageButton_Clicked"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
+                </StackLayout>
+                <Label Text="Время и дата"
+                           Margin="10,0,10,0"
+                           TextColor="#66C7F4" FontAttributes="Bold"/>
+
+                <Label Text="День"
+                           Margin="10"
+                           FontSize="12"/>
+
+                <DatePicker Margin="10,0,10,0"
+                            WidthRequest="300"
+                            BackgroundColor="#EEF6FE"
+                            HeightRequest="40"
+                            x:Name="DatePick"/>
+
+                <Label Text="Адрес"
+                           Margin="10"
+                           FontSize="12"/>
+
+                <TimePicker Margin="10,0,10,0"
+                            WidthRequest="300"
+                            BackgroundColor="#EEF6FE"
+                            HeightRequest="40"
+                            x:Name="TimePick"/>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="4"
+                         VerticalOptions="End">
+                <Button Text="Сохранить"
+                        TextColor="#fff"
+                        BackgroundColor="#66C7F4"
+                        WidthRequest="300"
+                        Margin="20"
+                        Clicked="Button_Clicked"
+                        />
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>
