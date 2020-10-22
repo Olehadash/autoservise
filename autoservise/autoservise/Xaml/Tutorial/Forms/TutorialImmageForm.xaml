@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Tutorial.Forms.TutorialImmageForm">
+  <ContentView.Content>
+        <StackLayout>
+            <Image x:Name="Picture"
+                   Margin="20,40,20,20" 
+                   Source="{OnPlatform iOS='25124.png', Android='25124.png'}" 
+                   WidthRequest="300"
+                   />
+
+            <Label x:Name="Title"
+                   Text="Создайте заявку"
+                   Margin="10, 60, 10, 10"
+                   TextColor="#66C7F4"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large"/>
+            <Label x:Name="Discription"
+                    Text="За 3 минуты создайте заявку. Её увидят автосервисы вашего города и ответят в приложении." 
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center"
+                    Margin="10, 0,10,10"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

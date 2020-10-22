@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.UserMainInterface.Forms.MyProfileForm">
+  <ContentView.Content>
+
+        <StackLayout IsVisible="True">
+            <Label Text="Мой профиль"
+                           HorizontalOptions="Center"
+                           FontSize="Large"
+                           TextColor="#66C7F4"
+                           Margin="10"/>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddCard">
+                            <Image Source="card.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Тарифный план"
+                                           FontSize="15"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddAress">
+                            <Image Source="map.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Выбрать город"
+                                           FontSize="15"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddName">
+                            <Image Source="changename.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Фамилия имя"
+                                           FontSize="Medium"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddLogo">
+                            <Image Source="photoadd.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Изменить логотип"
+                                           FontSize="Medium"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddPhone">
+                            <Image Source="changephone.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Изменить номер телефона"
+                                           FontSize="15"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddDescr">
+                            <Image Source="desico.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Изменить описание"
+                                           FontSize="15"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddSertif">
+                            <Image Source="sertif.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Изменить спецификацию"
+                                           FontSize="15"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout
+                            HorizontalOptions="Center"
+                            BackgroundColor="#EEF6FE"
+                            Padding="20"
+                            Margin="10,0,10,0"
+                            Grid.Row="0">
+                        <Grid 
+                                x:Name="AddPassword">
+                            <Image Source="keyimg.png"
+                                           HorizontalOptions="Start"/>
+                            <StackLayout
+                                    HorizontalOptions="Start"
+                                    Margin="35,0,10,0">
+
+                                <Label Text="Изменить пароль"
+                                           FontSize="Medium"
+                                               Margin="20,0,0,0"/>
+
+                            </StackLayout>
+                            <Image Source="arrow.png"
+                                       HeightRequest="15"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Margin="10">
+                        <Button Text="Написать в техподдержку"
+                                    TextColor="Black"
+                                    HorizontalOptions="Start"
+                                    />
+                        <Button Text="О приложении"
+                                    TextColor="Black"
+                                    HorizontalOptions="Start"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

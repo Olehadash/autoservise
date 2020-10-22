@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom ="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="autoservise.Xaml.UserPanel.UserMainInterface.Forms.CustomerRecall">
+  <ContentView.Content>
+        <StackLayout>
+            <custom:CircleImage Source="RecallDefIco.png"/>
+            <StackLayout BackgroundColor="#EEF6FE"
+                                 Margin="20,20,20,0">
+                <Label Text="Оцените работу"
+                               Margin="20,20,20,0"
+                               HorizontalOptions="Center"/>
+                <StackLayout Orientation="Horizontal"
+                                     Margin="0,0,0,20"
+                                     HorizontalOptions="CenterAndExpand">
+                    <ImageButton Source="starDisactive.png"/>
+                    <ImageButton Source="starDisactive.png"/>
+                    <ImageButton Source="starDisactive.png"/>
+                    <ImageButton Source="starDisactive.png"/>
+                    <ImageButton Source="starDisactive.png"/>
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout Margin="20">
+                <Label Padding="30,0,30,0"
+                            Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque erat in blandit luctus.Lorem ipsum dolor sit amet, consectetur ..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque erat in blandit luctus.Lorem ipsum dolor sit amet, consectetur ..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque erat in blandit luctus.Lorem ipsum dolor sit amet, consectetur ..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque erat in blandit luctus.Lorem ipsum dolor sit amet, consectetur .."/>
+            </StackLayout>
+            <Button Text="Отправить"
+                            TextColor="White"
+                            BackgroundColor="#66C7F4"
+                            Margin="20,0,20,0"/>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.MyOrderExecutorAnswerMessage">
+  <ContentView.Content>
+      <StackLayout>
+            <StackLayout Margin="20">
+                <Entry Placeholder="Введите текст "
+                                   HeightRequest="100"
+                                   VerticalTextAlignment="Start"/>
+                <Label Text="Сроки"
+                                   Margin="10,10,0,0"/>
+                <Grid>
+                    <Entry Placeholder="Введите дату"
+                                       Grid.Column="0"/>
+                    <Picker Grid.Column="1"
+                                    Title="Дней">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Дней</x:String>
+                                <x:String>Часов</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+                <Label Text="Укажите цену"
+                                   Margin="10,10,0,0"/>
+                <Entry Placeholder="Введите дату"/>
+                <StackLayout x:Name="Checkbox"
+                                         Orientation="Horizontal">
+                    <Image Source="toggle.png"/>
+                    <Label Text="Договорная цена"/>
+                </StackLayout>
+                <Button Text="Откликнутся"
+                                    BackgroundColor="#66C7F4"
+                                    TextColor="White"
+                                    Margin="0,20,0,0"/>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

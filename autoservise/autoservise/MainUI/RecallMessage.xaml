@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.RecallMessage">
+  <ContentView.Content>
+        <StackLayout 
+                            Margin="10"
+                            Padding="10">
+            <Grid>
+                <Label Grid.Column="0"
+                                       Text="Mary Thompson"
+                                       FontSize="Small"/>
+                <Label Grid.Column="1"
+                                       Text="20 марта 2019 "
+                                       FontSize="Small"
+                                       TextColor="Gray"
+                                       HorizontalOptions="End"/>
+            </Grid>
+            <StackLayout Orientation="Horizontal"
+                                         Margin="10">
+                <Image Source="star.png"/>
+                <Image Source="star.png"/>
+                <Image Source="star.png"/>
+                <Image Source="star.png"/>
+                <Image Source="star.png"/>
+            </StackLayout>
+            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque erat in blandit luctus.Lorem ipsum dolor sit amet,con.."/>
+
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

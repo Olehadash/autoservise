@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.UserMainInterface.Forms.MyChatForm">
+  <ContentView.Content>
+        <StackLayout>
+            <Label Text="Мои чаты"
+                           Margin="20, 10,0,0"
+                           FontSize="Title"
+                           TextColor="#66C7F4"/>
+            <ScrollView>
+                <StackLayout Margin="20,10,20,10" 
+                             HorizontalOptions="FillAndExpand">
+                    
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

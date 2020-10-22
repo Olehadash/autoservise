@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.UserPanel.UserMainInterface.Forms.OrderViewForm">
+  <ContentView.Content>
+      <StackLayout>
+            <StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <Grid>
+                            <Label Text="Name"
+                                       Margin="20,10,10,10"
+                                       FontSize="Medium" 
+                                       FontAttributes="Bold"/>
+                            <Label Text="city"
+                                       HorizontalOptions="End"
+                                       Margin="10,10,20,10"/>
+                        </Grid>
+                        <Label Text="Discription"
+                                   Margin="20,10,20,10"/>
+                        <StackLayout>
+                            <StackLayout
+                                    Margin="20,0,0,0"
+                                    Orientation="Horizontal">
+                                <Label Text="Адрес :" FontAttributes="Bold"/>
+                                <Label Text="Адрес"/>
+                            </StackLayout>
+                            <StackLayout
+                                    Margin="20,0,0,0"
+                                    Orientation="Horizontal">
+                                <Label Text="На когда:" FontAttributes="Bold"/>
+                                <Label Text="00.00.00"/>
+                                <Label Text="Время:" 
+                                           FontAttributes="Bold"
+                                           Margin=" 20,0,0,0"/>
+                                <Label Text="00:00"/>
+                            </StackLayout>
+                            <StackLayout
+                                    Margin="20,0,0,0"
+                                    Orientation="Horizontal">
+                                <Label Text="Бюджет:" FontAttributes="Bold"/>
+                                <Label Text="10000 "/>
+                            </StackLayout>
+                            <StackLayout
+                                    Margin="20,0,0,0"
+                                    Orientation="Horizontal">
+                                <Label Text="Номер телефона :" FontAttributes="Bold"/>
+                                <Label Text="+7778458585"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal"
+                                        Margin=" 20,10,20,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="piico.png"
+                                           WidthRequest="100"
+                                           HeightRequest="100"/>
+                                <Image Source="piico.png"
+                                           WidthRequest="100"
+                                           HeightRequest="100"/>
+                            </StackLayout>
+                        </ScrollView>
+                        <Grid Margin="20,0,20,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="15*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" 
+                                    Text="Начать работу"
+                                        BackgroundColor="#66C7F4"
+                                        TextColor="White"/>
+                            <ImageButton Grid.Column="1"
+                                    Source="callto.png"/>
+                            <ImageButton Grid.Column="2"
+                                    Source="messageto.png"/>
+                        </Grid>
+                        <Label Text="Мой ответ"
+                                   FontSize="Large"
+                                   Margin="20,10,20,0"
+                                   HorizontalOptions="Center"/>
+                        <StackLayout x:Name=""
+                                Margin="20,10,20,0">
+                            
+                        </StackLayout>
+                        
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -14,7 +14,7 @@ namespace autoservise
 
 
 
-            MainPage = new Galerry();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
