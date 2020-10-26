@@ -9,7 +9,7 @@ namespace autoservise.Controllers
     {
         private static ConfirmMailController _instance = null;
         UserModel usermodel = UserModel.Instance();
-        ServerController server = ServerController.Instance();
+        ServerController server = ServerController.GetInstance;
 
 
         static internal ConfirmMailController Instance()
@@ -23,27 +23,22 @@ namespace autoservise.Controllers
             return _instance;
         }
 
-        public async void GetCode(SuckessDelegate success, ErorDelegate error)
+        public async void GetCode()
         {
             List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
 
             form.Add(new KeyValuePair<string, string>("email", usermodel.user.email));
 
-            server.setsucksessdelegate(success);
-            server.seterrordelegate(error);
 
             await server.sendPostRequest("auth/verify/resend", form, false);
         }
 
-        public async void SendCode(string code, SuckessDelegate success, ErorDelegate error)
+        public async void SendCode(string code)
         {
             List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
 
             form.Add(new KeyValuePair<string, string>("email", usermodel.user.email));
             form.Add(new KeyValuePair<string, string>("code", code));
-
-            server.setsucksessdelegate(success);
-            server.seterrordelegate(error);
 
             await server.sendPostRequest("auth/verify", form, false);
         }

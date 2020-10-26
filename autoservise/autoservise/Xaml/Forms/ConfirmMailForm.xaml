@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.Xaml.Forms.ConfirmMailForm">
+  <ContentView.Content>
+        <StackLayout>
+            <StackLayout x:Name="RootLayout">
+                <Label Text="Введите код подтверждения"
+                       Margin="30,0,30,10"
+                       HorizontalOptions="Center"
+                       />
+                <Image Source="Letter.png"
+                           Margin="10"/>
+                <Label Text="Код для подтверждения отправлен на почту ivan.petrov65@email.com"
+                         FontSize="Small"
+                         XAlign ="Center"
+                         HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                         Margin="30,10,30,0"
+                           x:Name="MailVievText"/>
+                <StackLayout x:Name="Content">
+                    
+                </StackLayout>
+                
+                <Label Text="Получить новый код можно  через 30 сек"
+                         FontSize="Small"
+                         XAlign ="Center"
+                         HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                         Margin="30,10,30,0"
+                           x:Name="TemerText"/>
+
+                <Grid 
+                          Margin="10"
+                          x:Name="buttonsLine">
+
+                    <Button Text="Не получили код?"
+                                FontSize="Medium"
+                                HorizontalOptions="Start"
+                                TextColor="#000000"
+                                Clicked="Button_Clicked_1"/>
+
+                    <Button Text="Отправить еще раз"
+                                FontSize="Medium"
+                                HorizontalOptions="End"
+                                Clicked="Button_Clicked_1"
+                                />
+
+                </Grid>
+
+                <Button Text="Подтвердить"
+                            TextColor="#fff"
+                            BackgroundColor="#66C7F4"
+                            Margin="10,20,10,10"
+                            Clicked="Button_Clicked" 
+                        FontAttributes="Bold"
+                            />
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

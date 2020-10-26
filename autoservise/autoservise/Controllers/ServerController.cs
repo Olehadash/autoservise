@@ -1,7 +1,9 @@
 ﻿using autoservise.Models;
+using autoservise.Xaml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -17,7 +19,9 @@ namespace autoservise.Controllers
 {
     class ServerController
     {
-        private static ServerController _instance = null;
+        private static ServerController _instance = new ServerController();
+
+        LoadingPopupPage loading = new LoadingPopupPage();
 
         UserModel usermodel = UserModel.Instance();
 
@@ -26,43 +30,40 @@ namespace autoservise.Controllers
         SuckessDelegate suckess;
         ErorDelegate error;
 
+        public bool ServerResult = false;
+
         string j_resul = null;
+        bool isPreloader = true;
 
         private string host = "https://xn--80aealq7apged.su/api/v1/";
 
-        static internal ServerController Instance()
+        static internal ServerController GetInstance
         {
-            if (_instance == null)
-            {
-                _instance = new ServerController();
-                
+            get {
+                return _instance;
             }
-
-            return _instance;
         }
 
-        public async Task SendGetRequst(string path, SuckessDelegate s, ErorDelegate e)
+        public void SwitchOfpreloader()
+        {
+            isPreloader = false;
+        }
+
+        public async Task SendGetRequst(string path, bool IsOnlyBackGround = false)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(host);
-
-
-
+                if(!IsOnlyBackGround)
+                    await PopupNavigation.PushAsync(loading);
                 HttpResponseMessage response = await client.GetAsync(path);
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 Console.WriteLine(responseBody);
                 j_resul = responseBody;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    s();
-                }
-                else
-                {
-                    e();
-                }
+                if (!IsOnlyBackGround)
+                    PopupNavigation.RemovePageAsync(loading);
+                ServerResult = response.IsSuccessStatusCode;
             }
         }
 
@@ -82,20 +83,17 @@ namespace autoservise.Controllers
                 var content = new FormUrlEncodedContent(form);
 
                 var result = await client.PostAsync(path, content);
-
+                if(isPreloader)
+                    await PopupNavigation.PushAsync(loading);
                 string resultContent = await result.Content.ReadAsStringAsync();
+
                 j_resul = resultContent;
                 Console.WriteLine("Content seted");
-
-                if (result.IsSuccessStatusCode)
-                {
-                    
-                    if (suckess != null) this.suckess();
-                }
+                if (isPreloader)
+                    await PopupNavigation.RemovePageAsync(loading);
                 else
-                {
-                    if (error != null) this.error();
-                }
+                    isPreloader = true;
+                ServerResult = result.IsSuccessStatusCode;
             }
         }
 
@@ -114,15 +112,8 @@ namespace autoservise.Controllers
 
                 var result = await client.PostAsync(path, content);
 
-                if (result.IsSuccessStatusCode)
-                {
-                    j_resul = result.ToString();
-                    s();
-                }
-                else
-                {
-                    e();
-                }
+                j_resul = result.ToString();
+                ServerResult = result.IsSuccessStatusCode;
             }
         }
 

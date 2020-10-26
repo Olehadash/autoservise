@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.InputTextViewer">
+  <ContentView.Content>
+      <StackLayout>
+            <Label x:Name="Title"
+                Text="Укажите свой E-mail *"
+                           FontSize="Small"
+                           HorizontalOptions="Start"
+                   Margin="10,10,10,0"/>
+            <Frame x:Name="Border" 
+                BackgroundColor="#EEF6FE"
+                            WidthRequest="300"
+                            Margin="10,0,10,0"
+                   Padding="0"
+                            HasShadow="false"
+                   BorderColor="Transparent"
+                   
+                         >
+                <Grid x:Name="gridMain">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="80*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                        x:Name="Icon"
+                           Source="password.png"
+                           HeightRequest="25"
+                           Margin="15,10,10,10"/>
+                    <Entry Grid.Column="1"
+                           x:Name="EntryLabel"
+                           Placeholder="Password"
+                           BackgroundColor="#EEF6FE"
+                           HorizontalOptions="FillAndExpand"
+                           Margin="5"
+                           InputTransparent="True"
+                           TextChanged="EntryLabel_TextChanged"
+                           />
+                </Grid>
+            </Frame>
+            <Label x:Name="ErrorLabel" 
+                Text="Error message"
+                   Margin="10,0,0,0"
+                   FontSize="Small"
+                   TextColor ="Red"
+                       />
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

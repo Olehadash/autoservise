@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace autoservise.Xaml.Tutorial.Forms
+namespace autoservise.Xaml
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TutorialImmageForm : ContentView
+    public partial class MonetisationPage : ContentPage
     {
-        public TutorialImmageForm()
+        public MonetisationPage()
         {
             InitializeComponent();
         }

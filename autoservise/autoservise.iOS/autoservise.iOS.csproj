@@ -144,11 +144,17 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>2.0.0.6</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.1141" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage">
+      <Version>1.0.8</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -258,5 +264,26 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\keyimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\messageto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RecallDefIco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sertif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\starDisactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\callto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imageExaple.png" />
   </ItemGroup>
 </Project>

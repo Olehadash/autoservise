@@ -9,7 +9,7 @@ namespace autoservise.Controllers
     {
         private static CreateUserController _instance = null;
         UserModel usermodel = UserModel.Instance();
-        ServerController server = ServerController.Instance();
+        ServerController server = ServerController.GetInstance;
         CreateUserModel gum = CreateUserModel.Instance();
 
         static internal CreateUserController Instance()

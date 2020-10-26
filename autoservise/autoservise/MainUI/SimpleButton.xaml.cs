@@ -7,19 +7,28 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace autoservise.Xaml.Tutorial
+namespace autoservise.MainUI
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Tutorial1 : ContentPage
+    public partial class SimpleButton : ContentView
     {
-        public Tutorial1()
+        EmptyParametrDelegate action;
+        Button button;
+
+        public SimpleButton()
         {
             InitializeComponent();
+            button = (Button)FindByName("");
+        }
+
+        public void SetAction(EmptyParametrDelegate action)
+        {
+            this.action = action;
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Tutorial2();
+            if (action != null) action();
         }
     }
 }

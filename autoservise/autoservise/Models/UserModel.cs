@@ -1,4 +1,6 @@
-﻿using System;
+﻿using autoservise.Controllers;
+using autoservise.Models.Static;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,10 +28,18 @@ struct User
     public string plan_date { get; set; }
     public bool is_verified { get; set; }
     public string expires_at { get; set; }
+    public string code { get; set; }
 }
 
 namespace autoservise.Models
 {
+    public enum UserType
+    {
+        NONE     = 0,
+        CASTOMER = 1,
+        EXECUTOR = 2
+
+    }
 
     class UserModel
     {
@@ -46,6 +56,62 @@ namespace autoservise.Models
             }
 
             return _instance;
+        }
+
+        public void setUserType(UserType type)
+        {
+            switch (type)
+            {
+                case UserType.NONE:
+                    user.user_type = "";
+                    break;
+                case UserType.CASTOMER:
+                    user.user_type = "customer";
+                    break;
+                case UserType.EXECUTOR:
+                    user.user_type = "executor";
+                    break;
+            }
+        }
+
+        public UserType getType()
+        {
+            switch (user.user_type)
+            {
+                case "":
+                    return UserType.NONE;
+                    break;
+                case "customer":
+                    return UserType.CASTOMER;
+                    break;
+                case "executor":
+                    return UserType.EXECUTOR;
+                    break;
+                default:
+                    return UserType.NONE;
+                    break;
+
+            }
+        }
+
+        public PageType getPrelog()
+        {
+            switch (user.user_type)
+            {
+                case "":
+                    return PageType.Authorization;
+                    break;
+                case "customer":
+                    return PageType.CreateCustomer;
+                    break;
+                case "executor":
+                    return PageType.CreateExecutor;
+                    break;
+                default:
+                    return PageType.None;
+                    break;
+
+            }
         }
     }
 }

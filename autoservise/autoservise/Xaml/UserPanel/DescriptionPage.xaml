@@ -9,8 +9,7 @@
                          x:Name="HeadLayot">
                 <StackLayout Orientation="Horizontal"
                              Margin ="10,10,10,10">
-                    <ImageButton Source="back.png"
-                             Clicked="ImageButton_Clicked"/>
+                    <ImageButton Source="back.png"/>
                     <Label Text="Назад"
                            Margin="10,13,10,10"
                            FontSize="Medium"

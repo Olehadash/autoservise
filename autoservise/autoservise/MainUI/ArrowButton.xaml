@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.ArrowButton">
+  <ContentView.Content>
+        <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#ffffff"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    WidthRequest="300"
+                    x:Name="MainLayout">
+            <Image x:Name="imageIcon"
+                   Source="logico.png"
+                   WidthRequest="30"
+                   HorizontalOptions="Start"/>
+            <StackLayout
+                        HorizontalOptions="Center"
+                        Margin="20,0,50,0">
+                <Label x:Name="Title"
+                    Text="Войти как клиент "
+                    FontSize="Medium"/>
+                <Label x:Name="Subtitle"
+                       Text="Чтобы найти специалиста"
+                               FontSize="Micro"/>
+            </StackLayout>
+            <Image Source="arrow.png"
+                   HeightRequest="15"
+                           />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

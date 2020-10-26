@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.SimpleButton">
+  <ContentView.Content>
+        <StackLayout>
+            <Button x:Name="Button"
+                    Text="Забыли пароль?"
+                    HorizontalOptions="Start"
+                    FontSize="Medium"
+                    Margin="10,0,10,10"
+                    Clicked="Button_Clicked"/>
+            </StackLayout>
+  </ContentView.Content>
+</ContentView>

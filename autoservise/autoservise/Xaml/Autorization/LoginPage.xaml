@@ -5,62 +5,39 @@
 
     <ContentPage.Content>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <Label Text="Авторизация"
-                   Margin="10,50,10,10"
-                   HorizontalOptions="Center"
-                   TextColor="#66C7F4"
-                       FontSize="Title"/>
-                <Label Text="Укажите свой E-mail *"
-                       FontSize="Small"
-                       HorizontalOptions="Start"
-                       Margin="10,10,10,0"/>
-                <StackLayout BackgroundColor="#EEF6FE"
-                         Orientation="Horizontal"
-                         Margin="10,0,10,0">
-                    <Image Source="Email.png"
-                       HeightRequest="25"
-                       Margin="10,10,10,10"/>
-                    <Entry x:Name="mailtxt" 
-                        Placeholder="Email"
-                        BackgroundColor="#EEF6FE"
-                        HorizontalOptions="FillAndExpand"
-                        Margin="5"/>
+                <StackLayout x:Name="BackButton"
+                    Orientation="Horizontal"
+                             Margin ="10,30,10,10">
+                    <ImageButton Source="back.png"/>
+                    <Label Text="Назад"
+                           Margin="10,13,10,10"
+                           FontSize="15"/>
                 </StackLayout>
-                <Label Text="Укажите свой E-mail *"
-                           FontSize="Small"
-                           HorizontalOptions="Start"
-                   Margin="10,10,10,0"/>
-                <StackLayout BackgroundColor="#EEF6FE"
-                            WidthRequest="300"
-                            Orientation="Horizontal"
-                            Margin="10,0,10,0"
-                            
-                         >
-                    <Image Source="password.png"
-                           HeightRequest="25"
-                           Margin="15,10,10,10"/>
-                    <Entry x:Name="passtxt"
-                           Placeholder="Password"
-                           BackgroundColor="#EEF6FE"
-                           HorizontalOptions="FillAndExpand"
-                           Margin="5"
-                           IsPassword="True"
-                           InputTransparent="True"
-                           />
-
+                
+                <StackLayout>
+                    <Label x:Name="Title"
+                        Text="Авторизация"
+                           Margin="10,0,10,10"
+                           HorizontalOptions="Center"
+                           TextColor="#66C7F4"
+                           FontSize="Title"/>
                 </StackLayout>
-                <Button Text="Забыли пароль?"
-                    HorizontalOptions="Start"
-                        FontSize="Medium"
-                    Margin="10,0,10,10"
-                    Clicked="Button_Clicked_2"/>
+                <ScrollView>
+                    <StackLayout x:Name="Content">
 
-            
-        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
             <StackLayout Grid.Row="1"
                          VerticalOptions="End">
-                <Button Text="Зарегистрироваться"
+                <Button x:Name="BottomButton"
+                        Text="Зарегистрироваться"
                         TextColor="#fff"
                         BackgroundColor="#66C7F4"
                         WidthRequest="300"

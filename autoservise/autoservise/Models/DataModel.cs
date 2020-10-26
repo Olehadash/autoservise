@@ -1,5 +1,6 @@
 ﻿using autoservise.Controllers;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,13 @@ namespace autoservise.Models
 
         public List<Cities> cities = new List<Cities>();
         public List<Categories> categories = new List<Categories>();
+        CachPreferens cache = CachPreferens.GetInstance;
 
         public bool is_data_seted = false;
 
-        public ServerController server = ServerController.Instance();
+        public ServerController server = ServerController.GetInstance;
 
-        SuckessDelegate suckess;
+        ErorDelegate errordelegate;
 
         static internal DataModel GetInstance
         {
@@ -43,21 +45,38 @@ namespace autoservise.Models
             }
         }
 
-        public async void GetData(SuckessDelegate delegat_s, ErorDelegate error)
+        public async void GetData( ErorDelegate error)
         {
             if (is_data_seted)
             {
-                delegat_s();
                 return;
             }
-            suckess = delegat_s;
+            errordelegate = error;
 
-            await server.SendGetRequst("data", LoadData, error);
+            await server.SendGetRequst("data", true);
+            if (server.ServerResult)
+                LoadData(server.returnJsonResult());
+            else
+                Error();
         }
 
-        public void LoadData()
+        public void Error()
         {
-            string jsonstring = server.returnJsonResult();
+            if(cache.HasKey("data"))
+            {
+                LoadData(cache.GetString("data"));
+            }
+        }
+
+        public void SaweData(string jsonstring)
+        {
+            cache.SetKey("data", jsonstring);
+        }
+
+        public void LoadData(string jsonstring)
+        {
+            
+            SaweData(jsonstring);
             if (String.IsNullOrEmpty(jsonstring))
             {
                 return;
@@ -70,7 +89,7 @@ namespace autoservise.Models
             {
                 Cities city = new Cities();
                 city.id = (int)json["data"]["cities"][i]["id"];
-                city.name = json["data"]["cities"][i]["id"].ToString();
+                city.name = json["data"]["cities"][i]["name"].ToString();
 
                 cities.Add(city);
             }
@@ -88,7 +107,7 @@ namespace autoservise.Models
             }
 
             is_data_seted = true;
-            suckess();
+            
         }
 
 

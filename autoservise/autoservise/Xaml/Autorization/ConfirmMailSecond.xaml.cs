@@ -19,18 +19,19 @@ namespace autoservise.Xaml.Autorization
         ConfirmMailController controller = ConfirmMailController.Instance();
 
         Label timer;
-        Grid sendcode;
+        Grid secudes;
         Label mailView;
         Entry codetxt;
 
         int time = 30;
+        bool isTimerStarted = false;
 
         public ConfirmMailSecond()
         {
             InitializeComponent();
 
             timer = (Label)this.FindByName("TemerText");
-            sendcode = (Grid)this.FindByName("buttonsLine");
+            secudes = (Grid)this.FindByName("buttonsLine");
             mailView = (Label)this.FindByName("MailVievText");
             codetxt = (Entry)this.FindByName("CodeText");
 
@@ -41,20 +42,25 @@ namespace autoservise.Xaml.Autorization
 
         void SetTimer()
         {
-            sendcode.IsVisible = false;
+            secudes.IsVisible = false;
 
+            if (isTimerStarted) return;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
+                isTimerStarted = true;
                 timer.Text = "Получить новый код можно через" + time.ToString() + "сек";
                 time--;
                 if(time == 0)
                 {
                     timer.IsVisible = false;
-                    sendcode.IsVisible = true;
+                    secudes.IsVisible = true;
                 }
+                isTimerStarted = false;
                 return time > 0;
             });
         }
+
+        
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
@@ -68,7 +74,7 @@ namespace autoservise.Xaml.Autorization
 
                 return;
             }
-            controller.SendCode(codetxt.Text, Success, Error);
+            controller.SendCode(codetxt.Text);
         }
 
         void Success()
@@ -82,7 +88,7 @@ namespace autoservise.Xaml.Autorization
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            controller.GetCode(SetTimer, ErrorGetCode);
+            controller.GetCode();
         }
 
         void ErrorGetCode()

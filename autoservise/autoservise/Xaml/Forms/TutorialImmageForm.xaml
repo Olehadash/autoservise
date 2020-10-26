@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="autoservise.Xaml.Tutorial.Forms.TutorialImmageForm">
   <ContentView.Content>
-        <StackLayout>
+        <StackLayout x:Name="MainLayout">
             <Image x:Name="Picture"
                    Margin="20,40,20,20" 
                    Source="{OnPlatform iOS='25124.png', Android='25124.png'}" 

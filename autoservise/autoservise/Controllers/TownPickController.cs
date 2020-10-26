@@ -23,7 +23,7 @@ namespace autoservise.Controllers
 
         public async void GetData(SuckessDelegate delegat_s, ErorDelegate error)
         {
-            dataModel.GetData( delegat_s,  error);
+            //dataModel.GetData();
         }
 
     }

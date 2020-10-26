@@ -28,6 +28,8 @@ namespace autoservise.Xaml.Autorization
             this.city_id = id;
             this.city_name = name;
             label.Text = name;
+
+            Console.WriteLine("CityName = " + name);
         }
 
         public void SetDelegate(SuckessDelegate delegat)
@@ -63,7 +65,7 @@ namespace autoservise.Xaml.Autorization
 
         public void unpick()
         {
-            image.Source = "togglepick.png";
+            image.Source = "toggle.png";
         }
     }
 }

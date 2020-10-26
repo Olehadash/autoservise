@@ -11,6 +11,8 @@ namespace autoservise.Controllers
 
         private static RoolsFormValidate _instance = null;
 
+        public string[] paswords = new string[2]; 
+
         public static RoolsFormValidate Instance()
         {
             if(_instance == null)
@@ -67,6 +69,25 @@ namespace autoservise.Controllers
         public bool IsNullValidate(string str)
         {
             return String.IsNullOrEmpty(str);
+        }
+
+        public bool SetPasLink(string line)
+        {
+            bool result = false;
+            if (string.IsNullOrEmpty(paswords[0]))
+                paswords[0] = line;
+            else
+            {
+                paswords[1] = line;
+                result = true;
+            }
+            return result;
+        }
+
+        public bool ComparePassword()
+        {
+            if (string.IsNullOrEmpty(paswords[0])) return false;
+            return paswords[0].Equals(paswords[1]);
         }
 
         public bool CompareLineValidate(string str1, string str2)

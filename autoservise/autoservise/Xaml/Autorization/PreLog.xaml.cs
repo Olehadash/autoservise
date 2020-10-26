@@ -1,4 +1,7 @@
-﻿using autoservise.Models;
+﻿using autoservise.Controllers;
+using autoservise.MainUI;
+using autoservise.Models;
+using autoservise.Models.Static;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,30 +11,56 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
+
 namespace autoservise.Xaml.Autorization
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreLog : ContentPage
     {
-        CreateUserModel gum = CreateUserModel.Instance();
+        AnimationController animation = AnimationController.GetInstance;
+        AuthorizationPageModel authorization = AuthorizationPageModel.GetInstance;
+
+        UserModel usermodel = UserModel.Instance();
+
+        StackLayout mainLayout;
+        RelativeLayout rootLayout;
+
         public PreLog()
         {
             InitializeComponent();
+
+            mainLayout = (StackLayout)FindByName("Content");
+            rootLayout = (RelativeLayout)FindByName("RootLayout");
+
+            for (int i = 0; i< authorization.buttons.Count; i++)
+            {
+                ArrowButton arrowButton = new ArrowButton();
+                arrowButton.SetData(authorization.buttons[i].source, authorization.buttons[i].title, authorization.buttons[i].subtitle, (PageType)i+1);
+                arrowButton.SetButtonDelegate(buttonClickAction);
+                mainLayout.Children.Add(arrowButton);
+            }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        public void buttonClickAction(PageType viewName)
         {
-            gum._isConsumer = true;
-            App.Current.MainPage = new CreateUser();
+            switch(viewName)
+            {
+                case PageType.Authorization:
+                    usermodel.setUserType(UserType.NONE);
+                    break;
+                case PageType.CreateCustomer:
+                    usermodel.setUserType(UserType.CASTOMER);
+                    break;
+                case PageType.CreateExecutor:
+                    usermodel.setUserType(UserType.EXECUTOR);
+                    break;
+            }
+            animation.FeidOutOpacity(rootLayout, SwitchForm);
+            
         }
 
-        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        {
-            gum._isConsumer = false;
-            App.Current.MainPage = new CreateUser();
-        }
-
-        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
+        void SwitchForm()
         {
             App.Current.MainPage = new LoginPage();
         }

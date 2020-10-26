@@ -22,7 +22,7 @@ namespace autoservise.Models
     {
         private static OrderModel _instance = new OrderModel();
 
-        private ServerController server = ServerController.Instance();
+        private ServerController server = ServerController.GetInstance;
 
         public Order oreder = new Order();
 

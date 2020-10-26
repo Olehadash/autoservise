@@ -12,7 +12,7 @@ namespace autoservise.Controllers
     {
         private static AuthorizationController _instance = null;
 
-        ServerController server = ServerController.Instance();
+        ServerController server = ServerController.GetInstance;
         UserModel usermodel = UserModel.Instance();
 
         Switchdelegate success;

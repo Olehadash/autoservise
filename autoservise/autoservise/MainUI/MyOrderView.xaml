@@ -9,11 +9,11 @@
             <Grid Grid.Row="0"
                               HorizontalOptions="FillAndExpand">
                 <Label x:Name="labelHeader"
-                                    
-                                       Text="Orer Name"
-                                       Margin="10"
-                                       FontSize="Small"/>
-                <Label x:Name="labelHeader"
+                       
+                       Text="Orer Name"
+                       Margin="10"
+                       FontSize="Small"/>
+                <Label x:Name="labelRecall"
                                        Text="15 откликов"
                                        Margin="10"
                                        FontSize="Small"
