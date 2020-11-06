@@ -43,8 +43,8 @@ namespace autoservise.Xaml.UserPanel
             for(int i = 0; i< categoriesMax; i++)
             {
                 CatigogiesView category = new CatigogiesView();
-                category.SetData(dataModel.categories[i].id, dataModel.categories[i].name, dataModel.categories[i].description);
-                category.SetDelegate(CategoryPick);
+                //category.SetData(dataModel.categories[i].id, dataModel.categories[i].name, dataModel.categories[i].description);
+                //category.SetDelegate(CategoryPick);
                 scrollContent.Children.Add(category);
             }
             PopupNavigation.RemovePageAsync(loading);
@@ -60,5 +60,9 @@ namespace autoservise.Xaml.UserPanel
 
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

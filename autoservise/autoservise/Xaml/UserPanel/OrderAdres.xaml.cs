@@ -44,11 +44,11 @@ namespace autoservise.Xaml.UserPanel
             {
                 if(picker.Items[selectedIndex] == data.cities[i].name)
                 {
-                    order.oreder.adres = data.cities[i].name + " ";
+                    order.order.adres = data.cities[i].name + " ";
                 }
             }
 
-            order.oreder.adres += adress.Text;
+            order.order.adres += adress.Text;
 
             Back();
         }

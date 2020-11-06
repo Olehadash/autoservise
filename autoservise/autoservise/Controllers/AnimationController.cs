@@ -49,14 +49,14 @@ namespace autoservise.Controllers
             await view.FadeTo(0, 500);
             action();
         }
-        public async void OpacityIn(View view)
+        public async Task OpacityIn(View view, uint duration = 500)
         {
             view.Opacity = 0;
-            await view.FadeTo(1, 1000);
+            await view.FadeTo(1, duration);
         }
-        public async void OpacityOut(View view)
+        public async Task OpacityOut(View view, uint duration = 500)
         {
-            await view.FadeTo(0, 1000);
+            await view.FadeTo(0, duration);
         }
         public async Task OpacityInWthMove(View view, int i, uint duration = 250)
         {

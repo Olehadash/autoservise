@@ -27,7 +27,7 @@ namespace autoservise.Xaml.UserPanel
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            order.oreder.time = datepicker.Date.ToString() + " " + timepicker.Time.ToString();
+            order.order.time = datepicker.Date.ToString() + " " + timepicker.Time.ToString();
             Back();
         }
 

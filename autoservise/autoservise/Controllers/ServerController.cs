@@ -49,17 +49,27 @@ namespace autoservise.Controllers
             isPreloader = false;
         }
 
-        public async Task SendGetRequst(string path, bool IsOnlyBackGround = false)
+        public async Task SendGetRequst(string path, bool IsOnlyBackGround = false, bool isHeader = false)
         {
             using (var client = new HttpClient())
             {
+                Console.WriteLine("Send Get Request");
                 client.BaseAddress = new Uri(host);
+
                 if(!IsOnlyBackGround)
                     await PopupNavigation.PushAsync(loading);
                 HttpResponseMessage response = await client.GetAsync(path);
+
+                if (isHeader)
+                {
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Authorization", usermodel.user.token_type + " " + usermodel.user.access_token);
+                    Console.WriteLine("Header Seted");
+                }
+
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                Console.WriteLine(responseBody);
+                Console.WriteLine("Result: "+ responseBody);
                 j_resul = responseBody;
                 if (!IsOnlyBackGround)
                     PopupNavigation.RemovePageAsync(loading);
@@ -73,34 +83,41 @@ namespace autoservise.Controllers
             {
                 client.BaseAddress = new Uri(host);
                 client.Timeout = TimeSpan.FromSeconds(5);
-
+                Console.WriteLine("start send postRequest");
                 if(isHeader)
                 {
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("Authorization", usermodel.user.token_type + " " + usermodel.user.access_token);
+                    Console.WriteLine("Header Seted");
                 }
 
-                var content = new FormUrlEncodedContent(form);
-
+                FormUrlEncodedContent content = new FormUrlEncodedContent(form);
+                Console.WriteLine("Form Seted");
                 var result = await client.PostAsync(path, content);
-                if(isPreloader)
-                    await PopupNavigation.PushAsync(loading);
-                string resultContent = await result.Content.ReadAsStringAsync();
+                Console.WriteLine("REquestGeted");
+                if (result.IsSuccessStatusCode)
+                {
+                    Console.WriteLine(result);
+                    if (isPreloader)
+                        await PopupNavigation.PushAsync(loading);
+                    string resultContent = await result.Content.ReadAsStringAsync();
 
-                j_resul = resultContent;
-                Console.WriteLine("Content seted");
-                if (isPreloader)
-                    await PopupNavigation.RemovePageAsync(loading);
-                else
-                    isPreloader = true;
-                ServerResult = result.IsSuccessStatusCode;
+                    j_resul = resultContent;
+                    Console.WriteLine("Content seted");
+                    if (isPreloader)
+                        await PopupNavigation.RemovePageAsync(loading);
+                    else
+                        isPreloader = true;
+                    ServerResult = result.IsSuccessStatusCode;
+                }
             }
         }
 
-        public async Task sendPostRequest(string path, SuckessDelegate s, ErorDelegate e,  bool isHeader = true)
+        public async Task sendPostRequest(string path,  bool isHeader = true)
         {
             using (var client = new HttpClient())
             {
+                ServerResult = false;
                 client.BaseAddress = new Uri(host);
                 client.Timeout = TimeSpan.FromSeconds(5);
 
@@ -117,7 +134,7 @@ namespace autoservise.Controllers
             }
         }
 
-        public void InitializaContent()
+        public void InitializeContent()
         {
             content = new MultipartFormDataContent();
         }

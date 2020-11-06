@@ -18,8 +18,8 @@ namespace autoservise.Xaml.Autorization
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreLog : ContentPage
     {
+        UIRegistrator registrator = UIRegistrator.GetInstance;
         AnimationController animation = AnimationController.GetInstance;
-        AuthorizationPageModel authorization = AuthorizationPageModel.GetInstance;
 
         UserModel usermodel = UserModel.Instance();
 
@@ -33,10 +33,10 @@ namespace autoservise.Xaml.Autorization
             mainLayout = (StackLayout)FindByName("Content");
             rootLayout = (RelativeLayout)FindByName("RootLayout");
 
-            for (int i = 0; i< authorization.buttons.Count; i++)
+            for (int i = 0; i< registrator.buttons.Count; i++)
             {
                 ArrowButton arrowButton = new ArrowButton();
-                arrowButton.SetData(authorization.buttons[i].source, authorization.buttons[i].title, authorization.buttons[i].subtitle, (PageType)i+1);
+                arrowButton.SetData(registrator.buttons[i].source, registrator.buttons[i].title, registrator.buttons[i].subtitle, (PageType)i+1);
                 arrowButton.SetButtonDelegate(buttonClickAction);
                 mainLayout.Children.Add(arrowButton);
             }

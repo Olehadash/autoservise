@@ -286,4 +286,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\imageExaple.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\piico.png" />
+  </ItemGroup>
 </Project>

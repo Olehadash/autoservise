@@ -69,7 +69,7 @@ namespace autoservise.Xaml.UserPanel.ImageLoader
                 images.Add(mass[i].immageArray);
             }
 
-            order.oreder.images = images;
+            order.order.images = images;
             App.Current.MainPage = new AddOrder();
         }
 

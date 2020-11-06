@@ -5,17 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace autoservise.Models
 {
 
-    struct Cities
+    public struct Cities
     {
         public int id;
         public string name;
     }
 
-    struct Categories
+    public struct Categories
     {
         public int id;
         public string name;
@@ -45,26 +46,54 @@ namespace autoservise.Models
             }
         }
 
-        public async void GetData( ErorDelegate error)
+        public int GetCityByName(string city)
+        {
+            int i = 0;
+            for(i = 0; i< cities.Count;i++)
+            {
+                if(cities[i].name == city)
+                {
+                    return cities[i].id;
+                }
+            }
+            return -1;
+        }
+
+        public int GetCAtegoryIdByName(string category)
+        {
+            int i = 0;
+            for (i = 0; i < categories.Count; i++)
+            {
+                if (categories[i].name == category)
+                {
+                    return categories[i].id;
+                }
+            }
+            return -1;
+        }
+        public async Task GetData()
         {
             if (is_data_seted)
             {
                 return;
             }
-            errordelegate = error;
 
             await server.SendGetRequst("data", true);
             if (server.ServerResult)
                 LoadData(server.returnJsonResult());
             else
-                Error();
+                await Error();
         }
 
-        public void Error()
+        public async Task Error()
         {
             if(cache.HasKey("data"))
             {
                 LoadData(cache.GetString("data"));
+            }
+            else
+            {
+                GetData();
             }
         }
 
@@ -107,7 +136,7 @@ namespace autoservise.Models
             }
 
             is_data_seted = true;
-            
+            Console.WriteLine("Data Loaded");
         }
 
 

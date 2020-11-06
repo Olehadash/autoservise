@@ -42,14 +42,14 @@ namespace autoservise.Controllers
             return Preferences.Get(key, "string");
         }
 
-        public string GetInt(string key)
+        public int GetInt(string key)
         {
-            return Preferences.Get(key, "int");
+            return int.Parse(Preferences.Get(key, "int"));
         }
 
-        public string GetBool(string key)
+        public bool GetBool(string key)
         {
-            return Preferences.Get(key, "bool");
+            return bool.Parse(Preferences.Get(key, "bool"));
         }
     }
 }

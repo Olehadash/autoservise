@@ -1,4 +1,5 @@
 ﻿using autoservise.Controllers;
+using autoservise.MainUI;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,56 +9,15 @@ using System.Threading.Tasks;
 
 namespace autoservise.Models.Static
 {
-
     
-
-    public enum InputTextViewerType
-    {
-        UserName,
-        Password,
-        Phone,
-        CustomerName,
-        OrganizationName,
-        Email,
-        ConfirmMail
-    }
-    public class InputTextViewModel
-    {
-        public string title;
-        public string placeholder;
-        public string source;
-        public bool isPassword = false;
-
-        public InputTextViewModel(string title, string placeholder, string source, bool isPassword)
-        {
-            this.title = title;
-            this.placeholder = placeholder;
-            this.source = source;
-            this.isPassword = isPassword;
-        }
-    }
-
-    class arrowbut
-    {
-        public string source { get; set; }
-        public string title { get; set; }
-        public string subtitle { get; set; }
-
-        public arrowbut(string source, string title, string subtitle)
-        {
-            this.source = source;
-            this.title = title;
-            this.subtitle = subtitle;
-        }
-    }
     class AuthorizationPageModel
     {
         
-        public List<arrowbut> buttons = new List<arrowbut>();
-        public Dictionary<InputTextViewerType, InputTextViewModel> inputTextView = new Dictionary<InputTextViewerType, InputTextViewModel>();
+        
         private static AuthorizationPageModel _instace = new AuthorizationPageModel();
         UserModel usermodel = UserModel.Instance();
         ServerController server = ServerController.GetInstance;
+        CachPreferens cache = CachPreferens.GetInstance;
 
         static internal AuthorizationPageModel GetInstance
         {
@@ -68,16 +28,7 @@ namespace autoservise.Models.Static
         }
         public AuthorizationPageModel()
         {
-            buttons.Add(new arrowbut("logico.png", "Войти как клиент ", "Чтобы найти специалиста "));
-            buttons.Add(new arrowbut("logico2.png", "Войти как специалист ", "Чтобы предложить свои услуги"));
-            buttons.Add(new arrowbut("logico3.png", "У меня уже есть аккаунт ", ""));
-
-            inputTextView.Add (InputTextViewerType.UserName, new InputTextViewModel("Укажите имя *", "Имя", "username.png", false));
-            inputTextView.Add(InputTextViewerType.Phone, new InputTextViewModel("Укажите номер телефона *", "+777", "Phone.png", false));
-            inputTextView.Add(InputTextViewerType.Email, new InputTextViewModel("Укажите свой E-mail *", "mail", "Email.png", false));
-            inputTextView.Add(InputTextViewerType.Password, new InputTextViewModel("Напишите пароль *", "Пароль", "keyimg.png", true));
-            inputTextView.Add(InputTextViewerType.OrganizationName, new InputTextViewModel("Название организации", "Организация", "username.png", false));
-            inputTextView.Add(InputTextViewerType.ConfirmMail, new InputTextViewModel("", "Код подтверждения", "", false));
+            
         }
 
         public void Autorize()
@@ -99,15 +50,26 @@ namespace autoservise.Models.Static
             form.Add(new KeyValuePair<string, string>("type", usermodel.user.user_type));
             form.Add(new KeyValuePair<string, string>("phone", usermodel.user.phone));
 
-            server.setsucksessdelegate(GotoMainFormPage);
-
             await server.sendPostRequest("auth/register", form, false);
         }
 
-        public async void login()
+        public async Task ResetPassword()
         {
             List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
 
+            form.Add(new KeyValuePair<string, string>("email", usermodel.user.email));
+            form.Add(new KeyValuePair<string, string>("code", usermodel.user.code));
+            form.Add(new KeyValuePair<string, string>("password", usermodel.user.password));
+
+            await server.sendPostRequest("auth/verify", form, false);
+        }
+
+        public async Task login()
+        {
+            List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
+
+            Console.WriteLine("email " + usermodel.user.email);
+            Console.WriteLine("password " + usermodel.user.password);
 
             form.Add(new KeyValuePair<string, string>("email", usermodel.user.email));
             form.Add(new KeyValuePair<string, string>("password", usermodel.user.password));
@@ -115,8 +77,6 @@ namespace autoservise.Models.Static
             await server.sendPostRequest("auth/login", form, false);
             if (server.ServerResult)
                 logindata();
-            else
-                ErrorMessage();
         }
 
         public async void logindata()
@@ -146,10 +106,22 @@ namespace autoservise.Models.Static
             usermodel.user.is_verified = (bool)json["data"]["is_verified"];
             usermodel.user.expires_at = json["data"]["expires_at"].ToString();
             GotoMainFormPage();
+            usermodel.SeveData();
 
         }
 
         public async Task GetCode()
+        {
+            List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
+
+            form.Add(new KeyValuePair<string, string>("email", usermodel.user.email));
+
+            await server.sendPostRequest("auth/reset", form, false);
+            if (!server.ServerResult)
+                ErrorMessage();
+        }
+
+        public async Task GetCodeAgain()
         {
             List<KeyValuePair<string, string>> form = new List<KeyValuePair<string, string>>();
 

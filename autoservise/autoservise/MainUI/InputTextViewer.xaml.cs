@@ -10,12 +10,47 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
+
 namespace autoservise.MainUI
 {
+    public delegate void InputParemetDelegate(InputTextViewer input);
+    public enum InputTextViewerType
+    {
+        UserName,
+        Password,
+        Phone,
+        CustomerName,
+        OrganizationName,
+        Email,
+        ConfirmMail,
+        Desctiption,
+        OrederDescripton,
+        Adress, 
+        Budget
+    }
+
+    public class InputTextViewModel
+    {
+        public string title;
+        public string placeholder;
+        public string source;
+        public bool isPassword = false;
+
+        public InputTextViewModel(string title, string placeholder, string source, bool isPassword)
+        {
+            this.title = title;
+            this.placeholder = placeholder;
+            this.source = source;
+            this.isPassword = isPassword;
+        }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InputTextViewer : ContentView
     {
-        AuthorizationPageModel amodel = AuthorizationPageModel.GetInstance;
+        UIRegistrator registrator = UIRegistrator.GetInstance;
+        OrderModel order = OrderModel.GetInstance;
         RoolsFormValidate rools = RoolsFormValidate.Instance();
         UserModel usermodel = UserModel.Instance();
         ServerController server = ServerController.GetInstance;
@@ -27,6 +62,8 @@ namespace autoservise.MainUI
         Entry entry;
         Label errorLabel;
         Grid mainGrid;
+
+        InputParemetDelegate action;
 
         public InputTextViewer()
         {
@@ -73,14 +110,33 @@ namespace autoservise.MainUI
         public void SetData (InputTextViewerType type)
         {
             this.type = type;
-            InputTextViewModel model = amodel.inputTextView[type];
+            InputTextViewModel model = registrator.inputTextView[type];
             this.SetData(model.title, model.placeholder, model.source, model.isPassword);
-            if (type == InputTextViewerType.ConfirmMail)
-            {
-                entry.HorizontalTextAlignment = TextAlignment.Center;
+            if(string.IsNullOrEmpty(model.source))
                 mainGrid.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
                 mainGrid.ColumnDefinitions[1].Width = new GridLength(100, GridUnitType.Star);
+            switch (type) 
+            {
+                case InputTextViewerType.ConfirmMail:
+                    entry.HorizontalTextAlignment = TextAlignment.Center;
+                    break;
+                case InputTextViewerType.Desctiption:
+                    entry.HorizontalTextAlignment = TextAlignment.Start;
+                    entry.VerticalTextAlignment = TextAlignment.Start;
+                    entry.HeightRequest = 180;
+                    break;
+                case InputTextViewerType.OrederDescripton:
+                    entry.HorizontalTextAlignment = TextAlignment.Start;
+                    entry.VerticalTextAlignment = TextAlignment.Start;
+                    entry.HeightRequest = 180;
+                    mainGrid.BackgroundColor = Color.Transparent;
+                    break;
             }
+        }
+
+        public void SetDelegate(InputParemetDelegate action)
+        {
+            this.action = action;
         }
 
         public bool CheckLocalRools()
@@ -137,6 +193,11 @@ namespace autoservise.MainUI
 
             border.BorderColor = Color.Red;
         }
+        public void SetNoBorderError(string errorCaption)
+        {
+            errorLabel.Text = errorCaption;
+            errorLabel.IsVisible = true;
+        }
 
         public void HideError()
         {
@@ -165,6 +226,19 @@ namespace autoservise.MainUI
                     break;
                 case InputTextViewerType.ConfirmMail:
                     usermodel.user.code = entry.Text;
+                    break;
+                case InputTextViewerType.Desctiption:
+                    usermodel.user.about = entry.Text;
+                    break;
+                case InputTextViewerType.OrederDescripton:
+                    order.order.description = entry.Text;
+                    if(action != null) action(this);
+                    break;
+                case InputTextViewerType.Adress:
+                    order.order.adres += entry.Text;
+                    break;
+                case InputTextViewerType.Budget:
+                    order.order.price += int.Parse(entry.Text);
                     break;
             }
         }

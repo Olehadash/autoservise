@@ -73,17 +73,17 @@ namespace autoservise.Xaml.UserPanel
 
         private void Entry_BindingContextChanged(object sender, EventArgs e)
         {
-            order.oreder.description = entry.Text;
+            order.order.description = entry.Text;
         }
 
         private void Switcher_Toggled(object sender, ToggledEventArgs e)
         {
-            order.oreder.show_contacts = switcher.IsToggled;
+            order.order.show_contacts = switcher.IsToggled;
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            order.SendData(Sukcess, Error);
+            order.SendData();
         }
 
 

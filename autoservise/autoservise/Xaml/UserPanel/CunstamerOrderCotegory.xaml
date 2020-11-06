@@ -4,8 +4,8 @@
              x:Class="autoservise.Xaml.UserPanel.CunstamerOrderCotegory">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="ScrollContent"
-                         Margin="0,50,0,0">
+            <StackLayout >
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

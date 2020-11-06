@@ -4,29 +4,29 @@
              x:Class="autoservise.Xaml.UserPanel.ImageLoader.GeleryView">
   <ContentView.Content>
         <Frame x:Name="main"
-                               HeightRequest="150"
-                               BackgroundColor="#EEF6FE"
-                               Padding="0">
+               HeightRequest="150"
+               BackgroundColor="#EEF6FE"
+               Padding="0">
             <Grid
-                                Margin="10,0,10,0">
+                  Margin="10,0,10,0">
                 <StackLayout x:Name="close"
-                                    VerticalOptions="Start"
-                                    HorizontalOptions="End"
-                                    IsVisible="false">
+                             VerticalOptions="Start"
+                             HorizontalOptions="End"
+                             IsVisible="false">
                     <ImageButton 
-                                        Source="close.png"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                        Margin="0,0,10,0"
+                                 Source="close.png"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 Margin="0,0,10,0"
                         x:Name="closebutton"/>
                 </StackLayout>
                 <FlexLayout
-                                    x:Name="StartForm"
-                                    AlignItems="Center"
-                                    AlignContent="Center"
-                                    JustifyContent="Center"
-                                    HorizontalOptions="Center"
-                                    HeightRequest="150">
+                            x:Name="StartForm"
+                            AlignItems="Center"
+                            AlignContent="Center"
+                            JustifyContent="Center"
+                            HorizontalOptions="Center"
+                            HeightRequest="150">
 
                     <StackLayout 
                                             HorizontalOptions="Center"

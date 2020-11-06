@@ -4,6 +4,7 @@ using autoservise.Models;
 using autoservise.Models.Static;
 using autoservise.Xaml.Forms;
 using autoservise.Xaml.UserPanel;
+using autoservise.Xaml.UserPanel.UserMainInterface;
 using Rg.Plugins.Popup;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -39,10 +40,11 @@ namespace autoservise.Xaml.Autorization
         Label title;
         Button enterButton;
         SimpleButton button;
+        Label forgetPassword;
 
         PageType pageType;
 
-        List<InputTextViewer> elemnts = new List<InputTextViewer>();
+        List<View> elemnts = new List<View>();
         public LoginPage()
         {
             
@@ -62,6 +64,10 @@ namespace autoservise.Xaml.Autorization
             breadscribe.RegistratePage(PageType.CreateExecutor, CreateExecutor, Hide);
             breadscribe.RegistratePage(PageType.CityPick, GotoCityList, CityListHide);
             breadscribe.RegistratePage(PageType.ConfirmMail, ConfirmMailShow, ConfirmMailHide);
+            breadscribe.RegistratePage(PageType.ForgetPassword, ForgetPasswordShow, ForgetPasswordHide);
+            breadscribe.RegistratePage(PageType.ResetPassword, ResetPAsswordShow, Hide);
+            breadscribe.RegistratePage(PageType.ExecutorInfo, ExecutrorInfoShow, Hide);
+
             switch (pageType)
             {
                 case PageType.None:
@@ -81,6 +87,10 @@ namespace autoservise.Xaml.Autorization
 
         }
 
+        /*
+         * Build - Athorization method
+         * */
+
         async Task AuthorizationView()
         {
             InputTextViewer input = new InputTextViewer();
@@ -95,12 +105,17 @@ namespace autoservise.Xaml.Autorization
             button.SetAction(Button_Clicked);
             mainLayout.Children.Add(button);
             backButton.IsVisible = false;
+            title.IsVisible = true;
             title.Text = "Авторизация";
             title.Margin = new Thickness(10,50,10,10);
 
             await AthorizationAnimate();
 
         }
+        /*
+         * Login authorize method 
+            This method show Animation of Autorization
+         */
         async Task AthorizationAnimate()
         {
             if (button != null)
@@ -111,13 +126,18 @@ namespace autoservise.Xaml.Autorization
                 await animation.OpacityInWthMove(button, elemnts.Count);
             
         }
+        /*--------------------------------------------------------------------------------------------------------------------------------*/
 
-        /*Animatio Methods*/
+        /*
+         * Animation Methods
+         * Show - Hide
+         */
         async Task Show()
         {
-            animation.OpacityIn(title);
+            if(title.IsVisible)
+                animation.OpacityIn(title);
             animation.OpacityIn(enterButton);
-            ;
+            
             for (int i = 0; i < elemnts.Count; i++)
                 elemnts[i].Opacity = 0;
             await Task.Delay(100);
@@ -127,20 +147,28 @@ namespace autoservise.Xaml.Autorization
                 await Task.Delay(50);
             }
         }
-
         async Task Hide()
         {
             animation.OpacityOut(title);
             animation.OpacityOut(enterButton);
-            for (int i = 0; i < elemnts.Count; i++)
-                elemnts[i].Opacity = 0;
+            for (int i = 0; i < mainLayout.Children.Count; i++)
+                mainLayout.Children[i].Opacity = 0;
             await Task.Delay(100);
-            for (int i = 0; i < elemnts.Count; i++)
-                await animation.OpacityOutWthMove(elemnts[i], i);
+            for (int i = 0; i < mainLayout.Children.Count; i++)
+                await animation.OpacityOutWthMove(mainLayout.Children[i], i);
             if(button!=null)
-                await animation.OpacityInWthMove(button, elemnts.Count);
+                await animation.OpacityInWthMove(button, mainLayout.Children.Count);
+
+            mainLayout.Children.Clear();
         }
-        /**/
+        /*--------------------------------------------------------------------------------------------------------------------------------*/
+
+        
+
+        /*
+         * Create Customer 
+         * Show - Hide Function
+         */
         async Task CreateCustomer()
         {
             backButton.IsVisible = false;
@@ -177,6 +205,10 @@ namespace autoservise.Xaml.Autorization
 
             await Show();
         }
+        /*
+         * Create Executor 
+         * Show - Hide Method
+         */
         async Task CreateExecutor()
         {
             backButton.IsVisible = false;
@@ -214,57 +246,11 @@ namespace autoservise.Xaml.Autorization
             await Show();
         }
 
-        private void Button_Clicked()
-        {
-            App.Current.MainPage = new ForgetPassword();
-        }
-        private async void Button_Clicked_2(object sender, EventArgs e)
-        {
-            bool result = false;
-            for(int i = 0; i<elemnts.Count; i++)
-            {
-                result = elemnts[i].CheckLocalRools();
-            }
-            if (result) return;
-
-            switch (pageType)
-            {
-                case PageType.Authorization:
-                    elemnts.Clear();
-                    usermodel.user.email = elemnts[0].GetInfo();
-                    usermodel.user.password = elemnts[1].GetInfo();
-                    pagemodel.login();
-                    break;
-                case PageType.CreateCustomer:
-                    await pagemodel.CreateUser();
-                    if (server.ServerResult)
-                    {
-                        elemnts.Clear();
-                        await breadscribe.NextPage(PageType.CityPick);
-                    }
-                    else
-                    {
-                        Error();
-                    }
-                    break;
-                case PageType.CreateExecutor:
-                    await pagemodel.CreateUser();
-                    if (server.ServerResult)
-                    {
-                        elemnts.Clear();
-                        await breadscribe.NextPage(PageType.CityPick);
-                    }
-                    else
-                    {
-                        Error();
-                    }
-                    break;
-                case PageType.CityPick:
-                    await breadscribe.NextPage(PageType.ConfirmMail);
-                    break;
-            }
-        }
-
+        /*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*
+         * City List 
+         * Show - Hide Method
+         */
         async Task GotoCityList()
         {
             
@@ -288,7 +274,11 @@ namespace autoservise.Xaml.Autorization
             
             await Hide();
         }
-
+        /*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*
+         * Conrim Mail 
+         * Show- Hide Method
+         * */
         async Task ConfirmMailShow()
         {
             pageType = PageType.ConfirmMail;
@@ -296,9 +286,11 @@ namespace autoservise.Xaml.Autorization
             title.IsVisible = false;
             enterButton.IsVisible = false;
             ConfirmMailForm confirmMail = new ConfirmMailForm();
+            mainLayout.Opacity = 1;
             mainLayout.Children.Add(confirmMail);
             await confirmMail.Show();
-
+            confirmMail.SetTimer();
+            await pagemodel.GetCode();
 
         }
 
@@ -311,6 +303,123 @@ namespace autoservise.Xaml.Autorization
             
         }
 
+        /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*
+         * Forget Password
+         * Show - hide
+         * */
+
+        async Task ForgetPasswordShow()
+        {
+            pageType = PageType.ForgetPassword;
+            backButton.IsVisible = true;
+            title.Text = "Восстановление пароля";
+            title.Margin = new Thickness(10, 0, 10, 10);
+
+            InputTextViewer input = new InputTextViewer();
+            input.SetData(InputTextViewerType.Email);
+            elemnts.Add(input);
+            mainLayout.Children.Add(input);
+
+            forgetPassword = new Label
+            {
+                Text = "На него будет отправлено письмо с кодом",
+                FontSize = 12,
+                Margin = 10
+            };
+            mainLayout.Children.Add(forgetPassword);
+
+            enterButton.Text = "Далее";
+
+            title.Opacity = 0;
+            mainLayout.Opacity = 0;
+            enterButton.Opacity = 0;
+
+            await animation.OpacityIn(title,100);
+            await animation.OpacityIn(mainLayout, 100);
+            await animation.OpacityIn(enterButton, 100);
+
+        }
+        async Task ForgetPasswordHide()
+        {
+            await animation.OpacityOut(title);
+            await animation.OpacityOut(mainLayout);
+            await animation.OpacityOut(enterButton);
+
+            mainLayout.Children.Clear();
+
+        }
+        /*------------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*
+         * Reset Password
+         * Show - Hide
+         * */
+
+        async Task ResetPAsswordShow()
+        { 
+            pageType = PageType.ResetPassword;
+            backButton.IsVisible = true;
+            title.IsVisible = false;
+
+            InputTextViewer input = new InputTextViewer();
+            input.SetData(InputTextViewerType.Password);
+            elemnts.Add(input);
+            mainLayout.Children.Add(input);
+
+            input = new InputTextViewer();
+            input.SetData(InputTextViewerType.Password);
+            input.SetTitle("Повторите пароль *");
+            elemnts.Add(input);
+            mainLayout.Children.Add(input);
+
+            enterButton.IsVisible = true;
+            enterButton.Opacity = 1;
+            enterButton.Text = "Готово";
+            await Show();
+            await animation.OpacityIn(enterButton);
+        }
+
+        /*-------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+        /*
+         * ExecutrorInfo
+         * show - Hide
+         * */
+
+        async Task ExecutrorInfoShow()
+        {
+            pageType = PageType.ExecutorInfo;
+            backButton.IsVisible = true;
+            title.IsVisible = false;
+            CustomElementUI ui = new CustomElementUI();
+            ui.SetData(CustomUIViewerType.City);
+            mainLayout.Children.Add(ui);
+
+            ui = new CustomElementUI();
+            ui.SetData(CustomUIViewerType.Category);
+            mainLayout.Children.Add(ui);
+
+            ui = new CustomElementUI();
+            ui.SetData(CustomUIViewerType.GalleryOpen);
+            mainLayout.Children.Add(ui);
+
+            InputTextViewer input = new InputTextViewer();
+            input.SetData(InputTextViewerType.Desctiption);
+            input.SetNoBorderError("* Обезательное поле для заполнения");
+            mainLayout.Children.Add(input);
+
+            enterButton.Opacity = 1;
+            enterButton.Text = "Сохранить";
+            enterButton.IsVisible = true;
+
+            await Show();
+        }
+
+
+
+        /*
+         * Error Control Methods
+         */
 
         private void Error()
         {
@@ -323,6 +432,85 @@ namespace autoservise.Xaml.Autorization
         private async void ErrorPane(string Title, string message)
         {
             await DisplayAlert(Title, message, "OK");
+        }
+
+        /*
+         * ClickButtonHandlers
+         * Button_clikc ForSwitchi Between Foms
+         * */
+        private void Button_Clicked()
+        {
+            elemnts.Clear();
+            breadscribe.NextPage(PageType.ForgetPassword);
+        }
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            bool result = false;
+            for (int i = 0; i < elemnts.Count; i++)
+            {
+                result = (elemnts[i] as InputTextViewer).CheckLocalRools();
+            }
+            if (result) return;
+
+            switch (pageType)
+            {
+                case PageType.Authorization:
+                    
+                    usermodel.user.email = (elemnts[0] as InputTextViewer).GetInfo();
+                    usermodel.user.password = (elemnts[1] as InputTextViewer).GetInfo();
+                    elemnts.Clear();
+                    await pagemodel.login();
+                    if (server.ServerResult)
+                        App.Current.MainPage = new UserMainInterface();
+                    else
+                        Error();
+                    break;
+                case PageType.CreateCustomer:
+                    await pagemodel.CreateUser();
+                    if (server.ServerResult)
+                    {
+                        elemnts.Clear();
+                        await breadscribe.NextPage(PageType.ConfirmMail);
+                    }
+                    else
+                    {
+                        Error();
+                    }
+                    break;
+                case PageType.CreateExecutor:
+                    await pagemodel.CreateUser();
+                    if (server.ServerResult)
+                    {
+                        elemnts.Clear();
+                        await breadscribe.NextPage(PageType.ConfirmMail);
+                    }
+                    else
+                    {
+                        Error();
+                    }
+                    break;
+                case PageType.CityPick:
+                    App.Current.MainPage = new UserMainInterface();
+                    break;
+                case PageType.ForgetPassword:
+                    await breadscribe.NextPage(PageType.ConfirmMail);
+                    break;
+                    
+                case PageType.ResetPassword:
+                    await pagemodel.ResetPassword();
+                    if(server.ServerResult)
+                    {
+                        await breadscribe.GoToPage(0);
+                    }
+                    else
+                    {
+                        Error();
+                    }
+                    break;
+                case PageType.ExecutorInfo:
+                    App.Current.MainPage = new UserMainInterface();
+                    break;
+            }
         }
     }
 }

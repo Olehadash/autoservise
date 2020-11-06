@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.ButtonUI">
+  <ContentView.Content>
+      <StackLayout>
+            <Frame BackgroundColor="#EEF6FE"
+                               CornerRadius="15"
+                               HasShadow="False"
+                               Padding="10">
+                <Label x:Name="Caption"
+                       Text="Новый заказ"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,10"/>
+
+            </Frame>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -124,7 +124,7 @@ namespace autoservise.Xaml.Autorization
         public void Succksess()
         {
             PopupNavigation.RemovePageAsync(loading);
-            App.Current.MainPage = new ConfirmMailSecond();
+            //App.Current.MainPage = new ConfirmMailSecond();
         }
 
         public void Error()

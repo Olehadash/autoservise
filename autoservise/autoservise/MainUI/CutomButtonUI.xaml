@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.CutomButtonUI">
+  <ContentView.Content>
+      <StackLayout>
+            <StackLayout x:Name="MainLayout"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#EEF6FE"
+                    Padding="10"
+                    Margin="10,0,10,0"
+                    Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Icon"
+                           Grid.Column="0"
+                           Source="map.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <StackLayout Grid.Column="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Margin="10,0,10,0">
+
+                        <Label x:Name="Title" 
+                               Text="Добавить адрес"
+                               VerticalOptions="Center"
+                               FontSize="15"/>
+                        <Label x:Name="Subtitle" 
+                               Text="Не обязательное поле для заполнения"
+                               VerticalOptions="Center"
+                               FontSize="9"
+                               WidthRequest="290"
+                               />
+                    </StackLayout>
+                    <Image Grid.Column="2"
+                                Source="arrow.png"
+                               HeightRequest="15"
+                               HorizontalOptions="End"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

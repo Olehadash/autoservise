@@ -34,7 +34,7 @@ namespace autoservise.Xaml.UserPanel
             {
                 toggleImage.Source = toggleStat ? "toggle.png" : "togglepick.png";
                 toggleStat = !toggleStat;
-                order.oreder.deal_price = toggleStat;
+                order.order.deal_price = toggleStat;
                 if (toggleStat)
                     price.Text = "0";
 
@@ -46,8 +46,8 @@ namespace autoservise.Xaml.UserPanel
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if (!order.oreder.deal_price)
-                order.oreder.price = Convert.ToInt32( price.Text);
+            if (!order.order.deal_price)
+                order.order.price = Convert.ToInt32( price.Text);
 
             Back();
         }

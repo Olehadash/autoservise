@@ -13,7 +13,20 @@ public delegate void UiButtonDelegate(PageType name);
 
 namespace autoservise.MainUI
 {
-    
+    class arrowbut
+    {
+        public string source { get; set; }
+        public string title { get; set; }
+        public string subtitle { get; set; }
+
+        public arrowbut(string source, string title, string subtitle)
+        {
+            this.source = source;
+            this.title = title;
+            this.subtitle = subtitle;
+        }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ArrowButton : ContentView
     {

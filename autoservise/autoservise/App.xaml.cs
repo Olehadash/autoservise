@@ -3,7 +3,9 @@ using autoservise.Models;
 using autoservise.Models.Static;
 using autoservise.Xaml.Autorization;
 using autoservise.Xaml.UserPanel.ImageLoader;
+using autoservise.Xaml.UserPanel.UserMainInterface;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,31 +14,36 @@ namespace autoservise
     public partial class App : Application
     {
         CachPreferens cache = CachPreferens.GetInstance;
-        DataModel datamodel = DataModel.GetInstance;
+        DataModel data = DataModel.GetInstance;
         UserModel userModel = UserModel.Instance();
         BreadScribe breadScribe = BreadScribe.GetInstance;
+        AuthorizationPageModel auth = AuthorizationPageModel.GetInstance;
+        ServerController server = ServerController.GetInstance;
+
 
         public App()
         {
             InitializeComponent();
 
-            DataLoad();
-            /*
+            userModel.LoadData();
+            if(cache.HasKey("data"))
+            {
+                data.LoadData(cache.GetString("data"));
+            }
+
+
             if (!cache.HasKey("tutorial"))
                 MainPage = new MainPage();
-            else
+            else if (!cache.HasKey("user_id"))
                 MainPage = new PreLog();
-            */
-            userModel.user.email = "nias.adamov@gmail.com";
-            MainPage = new LoginPage();
-            
-
+            else if (cache.HasKey("user_password"))
+            {
+                Console.WriteLine("Logn");
+                MainPage = new UserMainInterface();
+            }
         }
 
-        public void DataLoad()
-        {
-            datamodel.GetData(DataLoad);
-        }
+
 
         protected override void OnStart()
         {

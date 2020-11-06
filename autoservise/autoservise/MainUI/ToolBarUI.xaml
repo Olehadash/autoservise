@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="autoservise.MainUI.ToolBarUI">
+  <ContentView.Content>
+        <Grid x:Name="ToolBar"
+                      IsVisible="false"
+                      Margin="0,0,0,10">
+            <StackLayout x:Name="ProfileButton"
+                         Grid.Column="0"
+                         VerticalOptions="End">
+                <Image Source="profile.png"/>
+                <Label Text="Мой профиль"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Micro"/>
+            </StackLayout>
+            <StackLayout x:Name="ChatButton"
+                         Grid.Column="1"
+                         VerticalOptions="End">
+                <Image Source="chats.png"/>
+                <Label Text="Мои чаты"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Micro"/>
+            </StackLayout>
+            <StackLayout x:Name="OredersButton"
+                         Grid.Column="2" 
+                         VerticalOptions="End">
+                <Image Source="orders.png"/>
+                <Label Text="Мои заявки"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Micro"/>
+            </StackLayout>
+            <StackLayout x:Name="RecallsButton"
+                         Grid.Column="2" 
+                         VerticalOptions="End"
+                         IsVisible="False">
+                <Image Source="recall.png"/>
+                <Label Text="Мои отклики"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Micro"/>
+            </StackLayout>
+            <StackLayout x:Name="SetOrderButton"
+                         Grid.Column="3">
+                <ImageButton Source="holdorder.png"
+                                     HeightRequest="80"
+                                     Margin="0,0,10,10"/>
+            </StackLayout>
+            <StackLayout x:Name="LastOrdersButton"
+                         Grid.Column="3" 
+                         VerticalOptions="End"
+                         IsVisible="False">
+                <Image Source="orders.png"/>
+                <Label Text="Новые заявки"
+                               HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Micro"/>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

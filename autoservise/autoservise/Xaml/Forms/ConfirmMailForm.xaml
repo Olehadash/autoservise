@@ -4,7 +4,8 @@
              x:Class="autoservise.Xaml.Forms.ConfirmMailForm">
   <ContentView.Content>
         <StackLayout>
-            <StackLayout x:Name="RootLayout">
+            <StackLayout 
+                         HorizontalOptions="Center">
                 <Label Text="Введите код подтверждения"
                        Margin="30,0,30,10"
                        HorizontalOptions="Center"
@@ -30,7 +31,7 @@
                          Margin="30,10,30,0"
                            x:Name="TemerText"/>
 
-                <Grid 
+                <Grid IsVisible="false"
                           Margin="10"
                           x:Name="buttonsLine">
 

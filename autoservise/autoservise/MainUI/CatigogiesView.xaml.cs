@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+public delegate void IntparametrDelegate(int parametr);
+
 namespace autoservise.Xaml.UserPanel
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CatigogiesView : ContentView
     {
+        Categories _category;
         Grid maingrid;
         Label titleLabale;
         Label descriptionLabele;
@@ -20,6 +23,7 @@ namespace autoservise.Xaml.UserPanel
         OrderModel order = OrderModel.GetInstance;
 
         int category_id = 0;
+        int parent_id = 0;
 
         public CatigogiesView()
         {
@@ -32,21 +36,30 @@ namespace autoservise.Xaml.UserPanel
            
         }
          
-        public void SetData(int id, string title, string descriprton)
+        public void SetData(int id, string title, string descriprton, int parent_id)
         {
+            this.parent_id = parent_id;
             category_id = id;
             titleLabale.Text = title;
             descriptionLabele.Text = descriprton;
         }
 
-        public void SetDelegate(SuckessDelegate action)
+        public void SetData(Categories category)
+        {
+            this.category_id = category.id;
+            this.titleLabale.Text = category.name;
+            this.parent_id = category.parent_id;
+            this.descriptionLabele.Text = category.description;
+        }
+
+        public void SetDelegate(IntparametrDelegate action)
         {
             var tgr = new TapGestureRecognizer { NumberOfTapsRequired = 1 };
             tgr.TappedCallback = (sender, args) =>
             {
-                order.oreder.category_id = category_id;
+                order.order.category_id = category_id;
                 if (action != null)
-                    action();
+                    action(this.category_id);
 
             };
             maingrid.GestureRecognizers.Add(tgr);

@@ -21,12 +21,13 @@ namespace autoservise.Xaml.Forms
         AuthorizationPageModel pagemodel = AuthorizationPageModel.GetInstance;
         BreadScribe breadScribe = BreadScribe.GetInstance;
         ServerController server = ServerController.GetInstance;
+        List<InputTextViewer> inputs = new List<InputTextViewer>();
 
         Label timer;
         Grid buttonline;
         Label mailView;
         StackLayout layout;
-        StackLayout rootlayout;
+        InputTextViewer input;
 
 
 
@@ -45,73 +46,88 @@ namespace autoservise.Xaml.Forms
         }
 
         void Build()
-        {
-            buttonline.IsVisible = false;
+        { 
+            
             InputTextViewer input = new InputTextViewer();
             input.SetData(InputTextViewerType.ConfirmMail);
             layout.Children.Add(input);
             mailView.Text = "Код для подтверждения отправлен на почту " + usermodel.user.email;
-            /*for(int i = 0; i<rootlayout.Children.Count;i++)
-            {
-                rootlayout.Children[i].Opacity = 0;
-            }*/
+            mailView.HorizontalOptions = LayoutOptions.Center;
+            timer.HorizontalOptions = LayoutOptions.Center;
+            buttonline.IsVisible = false;
+            this.Opacity = 0;
         }
 
         public async Task Show()
         {
-            for (int i = 0; i < rootlayout.Children.Count; i++)
-            {
-                animation.OpacityInWthMove(rootlayout.Children[i], i);
-                await Task.Delay(20);
-            }
+            await animation.OpacityIn(this);
         }
         public async Task Hide()
         {
-            for (int i = 0; i < rootlayout.Children.Count; i++)
+            for (int i = 0; i < layout.Children.Count; i++)
             {
-                animation.OpacityOutWthMove(rootlayout.Children[i], i);
+                animation.OpacityOutWthMove(layout.Children[i], i);
                 await Task.Delay(20);
             }
         }
 
-        void SetTimer()
+        public void SetTimer()
         {
             if (isTimerStarted) return;
             time = 30;
+            timer.Text = "Получить новый код можно через " + time.ToString() + " сек";
             buttonline.IsVisible = false;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 isTimerStarted = true;
                 timer.Text = "Получить новый код можно через " + time.ToString() + " сек";
                 time--;
+                mailView.HorizontalOptions = LayoutOptions.Center;
+                timer.HorizontalOptions = LayoutOptions.Center;
                 if (time == 0)
                 {
                     timer.IsVisible = false;
+                    isTimerStarted = false;
                     buttonline.IsVisible = true;
                 }
-                isTimerStarted = false;
-                buttonline.IsVisible = true;
+                
                 return time > 0;
             });
+            
         }
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await pagemodel.GetCode();
-            SetTimer();
+            await pagemodel.SendCode();
+            if (server.ServerResult)
+            {
+                switch (breadScribe.GetFirstPageType())
+                {
+                    case PageType.CreateCustomer:
+                        await breadScribe.NextPage(PageType.CityPick);
+                        break;
+                    case PageType.CreateExecutor:
+                        await breadScribe.NextPage(PageType.ExecutorInfo);
+                        break;
+                    case PageType.Authorization:
+                        await breadScribe.NextPage(PageType.ResetPassword);
+                        break;
+                }
+            }
+            else
+            {
+                input.SetError("Неверный код");
+            }
+            
 
         }
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
+            SetTimer();
+            timer.IsVisible = true;
+            await pagemodel.GetCodeAgain();
             // go To Main
-            await pagemodel.SendCode();
-            if(server.ServerResult)
-            {
-
-            }else
-            {
-                
-            }
+            
         }
     }
 }

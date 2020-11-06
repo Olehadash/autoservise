@@ -12,7 +12,25 @@ namespace autoservise.Controllers
         CreateExecutor,
         Authorization,
         CityPick,
-        ConfirmMail
+        ConfirmMail,
+        ForgetPassword,
+        Categories,
+        ResetPassword,
+        ExecutorInfo,
+        CategoryFirstPanel,
+        CategorySecondPanel,
+        CategoryTreedPanel,
+        CategoryFourPanel,
+        PublishOrder,
+        AddAdressOrder,
+        AddDateOrder,
+        AddBudgetOrder,
+        Gallery,
+        MyOrderList,
+        OrderMessanger,
+        MainPage
+
+
     }
     public struct PageOperationDelegates
     {
@@ -63,6 +81,17 @@ namespace autoservise.Controllers
             stek.RemoveAt(stek.Count-1);
 
         }
+        public async Task GoToPage(int index)
+        {
+            if (stek.Count < 2)
+                return;
+            await pageOperation[stek[stek.Count - 1]].close();
+            await pageOperation[stek[index]].open();
+
+            for(int i = stek.Count - 1; i> index; i--)
+                stek.RemoveAt(i);
+
+        }
 
         public void RegistratePage(PageType type, Func<Task> open, Func<Task> close)
         {
@@ -72,6 +101,21 @@ namespace autoservise.Controllers
             pageOperationDelegates.open = open;
             pageOperationDelegates.close = close;
             pageOperation.Add(type, pageOperationDelegates);
+        }
+
+        public PageType GetPageType(int index)
+        {
+            return stek[index];
+        }
+
+        public PageType GetFirstPageType()
+        {
+            return stek[0];
+        }
+        
+        public PageType GetLastElement()
+        {
+            return stek[stek.Count-1];
         }
     }
 }
