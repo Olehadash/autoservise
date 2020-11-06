@@ -24,6 +24,7 @@ namespace autoservise
         public App()
         {
             InitializeComponent();
+            //cache.CleanCache();
 
             userModel.LoadData();
             if(cache.HasKey("data"))

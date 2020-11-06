@@ -17,6 +17,10 @@ namespace autoservise.Controllers
             }
         }
 
+        public void CleanCache()
+        {
+            Preferences.Clear();
+        }
         public bool HasKey(string key)
         {
             return Preferences.ContainsKey(key);

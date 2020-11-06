@@ -34,9 +34,9 @@ namespace autoservise.Xaml.Tutorial.Forms
             }
         }
 
-        public void SetData(string picture, string titles, string descr)
+        public void SetData(string source, string titles, string descr)
         {
-            mainImage.Source = picture;
+            mainImage.Source = source;
             title.Text = titles;
             description.Text = descr;
         }
