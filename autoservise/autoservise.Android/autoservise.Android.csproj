@@ -81,7 +81,6 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\drawable\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
@@ -109,16 +108,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\_114360-391.png" />
+    <AndroidResource Include="Resources\drawable\tutorialpic2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4457 2.png" />
+    <AndroidResource Include="Resources\drawable\tutorialpic.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\4458.png" />
+    <AndroidResource Include="Resources\drawable\tutorialpic4.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\25124.png" />
+    <AndroidResource Include="Resources\drawable\tutorialpic3.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\arrow.png" />
@@ -154,10 +153,10 @@
     <AndroidResource Include="Resources\drawable\desico.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Email.png" />
+    <AndroidResource Include="Resources\drawable\email.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EmptyIco.png" />
+    <AndroidResource Include="Resources\drawable\emptyIco.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\holdorder.png" />
@@ -169,7 +168,7 @@
     <AndroidResource Include="Resources\drawable\keyimg.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Letter.png" />
+    <AndroidResource Include="Resources\drawable\letter.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logico.png" />
@@ -199,7 +198,7 @@
     <AndroidResource Include="Resources\drawable\password.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Phone.png" />
+    <AndroidResource Include="Resources\drawable\phone.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\photoadd.png" />
@@ -208,7 +207,7 @@
     <AndroidResource Include="Resources\drawable\piico.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Plus.png" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\profile.png" />
@@ -217,10 +216,10 @@
     <AndroidResource Include="Resources\drawable\recall.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RecallDefIco.png" />
+    <AndroidResource Include="Resources\drawable\recalldefIco.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SendMessage.png" />
+    <AndroidResource Include="Resources\drawable\sendmessage.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\sendphoto.png" />
@@ -232,7 +231,7 @@
     <AndroidResource Include="Resources\drawable\star.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\starDisactive.png" />
+    <AndroidResource Include="Resources\drawable\stardisactive.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\timedata.png" />
